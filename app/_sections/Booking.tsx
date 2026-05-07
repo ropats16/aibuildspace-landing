@@ -1,27 +1,8 @@
-"use client";
-
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+import { CalEmbedLazy } from "@/app/_components/CalEmbedLazy";
 import { Container } from "@/app/_components/Container";
 import { LeadForm } from "@/app/_components/LeadForm";
-import { calLink, calNamespace } from "@/data/booking";
 
 export function Booking() {
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi({ namespace: calNamespace });
-      cal("ui", {
-        theme: "light",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#2547D0" },
-          dark: { "cal-brand": "#2547D0" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
-
   return (
     <section id="book" className="scroll-mt-20 py-24 sm:py-28 lg:py-32">
       <Container>
@@ -40,12 +21,7 @@ export function Booking() {
 
         <div className="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
-            <Cal
-              namespace={calNamespace}
-              calLink={calLink}
-              style={{ width: "100%", height: "640px", overflow: "scroll" }}
-              config={{ layout: "month_view" }}
-            />
+            <CalEmbedLazy />
           </div>
           <LeadForm />
         </div>
