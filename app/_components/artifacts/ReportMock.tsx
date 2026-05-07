@@ -1,41 +1,33 @@
 export function ReportMock() {
   const rows = [
-    { rank: 1, theme: "Slow first response", count: 38 },
-    { rank: 2, theme: "Confusing onboarding", count: 27 },
-    { rank: 3, theme: "Missing CSV export", count: 19 },
-    { rank: 4, theme: "Login loop on Safari", count: 12 },
-    { rank: 5, theme: "Vague error messages", count: 9 },
+    { theme: "Slow first response", count: 38, pct: 100 },
+    { theme: "Confusing onboarding", count: 27, pct: 71 },
+    { theme: "Missing CSV export", count: 19, pct: 50 },
+    { theme: "Login loop on Safari", count: 12, pct: 32 },
+    { theme: "Vague errors", count: 9, pct: 24 },
   ];
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-white px-4 pt-3 pb-3 shadow-sm ring-1 ring-black/5">
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="text-[10px] font-medium uppercase tracking-[0.14em] text-orange-700/90">
-            Customer research
-          </div>
-          <div className="mt-0.5 font-display text-[13px] font-semibold text-ink">
-            Top complaints · last 30d
-          </div>
-        </div>
-        <div className="rounded-md border border-orange-200 bg-orange-50 px-1.5 py-0.5 text-[9px] font-medium tabular-nums text-orange-700">
+    <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
+      <div className="flex items-center justify-between border-b border-black/5 bg-gradient-to-r from-orange-50 to-amber-50/60 px-3 py-1.5">
+        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-orange-700/90">
+          Top complaints
+        </span>
+        <span className="rounded-md border border-orange-200 bg-orange-50 px-1.5 py-0.5 text-[9px] font-medium tabular-nums text-orange-700">
           312 tickets
-        </div>
+        </span>
       </div>
-
-      <ul className="mt-2 flex-1 overflow-hidden rounded-md ring-1 ring-black/5">
-        {rows.map((r, i) => (
-          <li
-            key={r.rank}
-            className={`grid grid-cols-[18px_1fr_auto] items-center gap-2 px-2 py-[5px] text-[10.5px] ${
-              i % 2 ? "bg-orange-50/40" : "bg-white"
-            }`}
-          >
-            <span className="text-right font-medium tabular-nums text-orange-700/90">
-              {r.rank}
+      <ul className="flex flex-1 flex-col justify-center gap-1.5 px-3">
+        {rows.map((r) => (
+          <li key={r.theme} className="flex items-center gap-2">
+            <span className="relative h-2 flex-1 rounded-sm bg-orange-50">
+              <span
+                className="absolute inset-y-0 left-0 rounded-sm bg-gradient-to-r from-orange-400 to-orange-500"
+                style={{ width: `${r.pct}%` }}
+                aria-hidden
+              />
             </span>
-            <span className="truncate text-ink">{r.theme}</span>
-            <span className="rounded-sm bg-orange-100 px-1 py-0.5 text-[9px] font-medium tabular-nums text-orange-700">
+            <span className="shrink-0 text-[10px] font-medium tabular-nums text-orange-700">
               {r.count}
             </span>
           </li>

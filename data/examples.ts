@@ -27,6 +27,8 @@ export type Example = {
   accent: ExampleAccent;
   artifact: ArtifactType;
   outcomeLabel: string;
+  logo?: string;
+  logoAlt?: string;
 };
 
 export const examples: Example[] = [
@@ -38,6 +40,8 @@ export const examples: Example[] = [
     accent: "amber",
     artifact: "email-digest",
     outcomeLabel: "Morning brief",
+    logo: "/logos/gmail.svg",
+    logoAlt: "Gmail",
   },
   {
     id: "inbox-triage",
@@ -47,6 +51,8 @@ export const examples: Example[] = [
     accent: "indigo",
     artifact: "inbox-mock",
     outcomeLabel: "Inbox triage",
+    logo: "/logos/gmail.svg",
+    logoAlt: "Gmail",
   },
   {
     id: "investor-deck",
@@ -56,6 +62,8 @@ export const examples: Example[] = [
     accent: "violet",
     artifact: "slide-thumbs",
     outcomeLabel: "Investor update",
+    logo: "/logos/powerpoint.svg",
+    logoAlt: "PowerPoint",
   },
   {
     id: "customer-research",
@@ -65,6 +73,8 @@ export const examples: Example[] = [
     accent: "orange",
     artifact: "report-mock",
     outcomeLabel: "Top complaints",
+    logo: "/logos/notion.svg",
+    logoAlt: "Notion",
   },
   {
     id: "vertical-reel",
@@ -83,6 +93,8 @@ export const examples: Example[] = [
     accent: "emerald",
     artifact: "slack-message",
     outcomeLabel: "Monday metrics",
+    logo: "/logos/slack.svg",
+    logoAlt: "Slack",
   },
   {
     id: "pr-description",
@@ -92,6 +104,8 @@ export const examples: Example[] = [
     accent: "teal",
     artifact: "pr-description",
     outcomeLabel: "PR description",
+    logo: "/logos/github.svg",
+    logoAlt: "GitHub",
   },
   {
     id: "support-bug",
@@ -101,6 +115,8 @@ export const examples: Example[] = [
     accent: "red",
     artifact: "bug-report",
     outcomeLabel: "Bug report",
+    logo: "/logos/jira.svg",
+    logoAlt: "Jira",
   },
 ];
 

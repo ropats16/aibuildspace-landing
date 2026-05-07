@@ -1,80 +1,81 @@
+import Image from "next/image";
 import type { Example, ExampleAccent } from "@/data/examples";
 import { artifactComponents } from "./artifacts";
 
 type AccentClasses = {
-  chip: string;
-  dot: string;
   arrowBg: string;
   arrowText: string;
-  quote: string;
+  ring: string;
 };
 
 const accentMap: Record<ExampleAccent, AccentClasses> = {
   amber: {
-    chip: "bg-amber-100 text-amber-800",
-    dot: "bg-amber-500",
-    arrowBg: "bg-amber-50 ring-amber-200/60",
+    arrowBg: "bg-amber-50",
     arrowText: "text-amber-700",
-    quote: "text-amber-500",
+    ring: "ring-amber-200/70",
   },
   indigo: {
-    chip: "bg-indigo-100 text-indigo-800",
-    dot: "bg-indigo-500",
-    arrowBg: "bg-indigo-50 ring-indigo-200/60",
+    arrowBg: "bg-indigo-50",
     arrowText: "text-indigo-700",
-    quote: "text-indigo-500",
+    ring: "ring-indigo-200/70",
   },
   violet: {
-    chip: "bg-violet-100 text-violet-800",
-    dot: "bg-violet-500",
-    arrowBg: "bg-violet-50 ring-violet-200/60",
+    arrowBg: "bg-violet-50",
     arrowText: "text-violet-700",
-    quote: "text-violet-500",
+    ring: "ring-violet-200/70",
   },
   orange: {
-    chip: "bg-orange-100 text-orange-800",
-    dot: "bg-orange-500",
-    arrowBg: "bg-orange-50 ring-orange-200/60",
+    arrowBg: "bg-orange-50",
     arrowText: "text-orange-700",
-    quote: "text-orange-500",
+    ring: "ring-orange-200/70",
   },
   rose: {
-    chip: "bg-rose-100 text-rose-800",
-    dot: "bg-rose-500",
-    arrowBg: "bg-rose-50 ring-rose-200/60",
+    arrowBg: "bg-rose-50",
     arrowText: "text-rose-700",
-    quote: "text-rose-500",
+    ring: "ring-rose-200/70",
   },
   emerald: {
-    chip: "bg-emerald-100 text-emerald-800",
-    dot: "bg-emerald-500",
-    arrowBg: "bg-emerald-50 ring-emerald-200/60",
+    arrowBg: "bg-emerald-50",
     arrowText: "text-emerald-700",
-    quote: "text-emerald-500",
+    ring: "ring-emerald-200/70",
   },
   teal: {
-    chip: "bg-teal-100 text-teal-800",
-    dot: "bg-teal-500",
-    arrowBg: "bg-teal-50 ring-teal-200/60",
+    arrowBg: "bg-teal-50",
     arrowText: "text-teal-700",
-    quote: "text-teal-500",
+    ring: "ring-teal-200/70",
   },
   red: {
-    chip: "bg-red-100 text-red-800",
-    dot: "bg-red-500",
-    arrowBg: "bg-red-50 ring-red-200/60",
+    arrowBg: "bg-red-50",
     arrowText: "text-red-700",
-    quote: "text-red-500",
+    ring: "ring-red-200/70",
   },
 };
 
-const categoryLabel: Record<Example["category"], string> = {
-  mail: "Mail",
-  deck: "Deck",
-  slack: "Slack",
-  video: "Video",
-  code: "Code",
-};
+function FallbackIcon({ category }: { category: Example["category"] }) {
+  const props = {
+    viewBox: "0 0 24 24",
+    fill: "none" as const,
+    stroke: "currentColor",
+    strokeWidth: 1.6,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    className: "h-6 w-6 text-ink/70",
+    "aria-hidden": true,
+  };
+  if (category === "video") {
+    return (
+      <svg {...props}>
+        <rect x="6" y="3" width="12" height="18" rx="2" />
+        <path d="M10.5 10.5l4 1.5-4 1.5z" fill="currentColor" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...props}>
+      <path d="M9 7l-5 5 5 5M15 7l5 5-5 5" />
+    </svg>
+  );
+}
 
 export function ExampleCard({ example }: { example: Example }) {
   const Artifact = artifactComponents[example.artifact];
@@ -84,23 +85,26 @@ export function ExampleCard({ example }: { example: Example }) {
     <article
       tabIndex={0}
       data-accent={example.accent}
-      className="group relative flex w-full flex-col overflow-hidden rounded-2xl bg-card p-5 ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-22px_rgba(11,11,12,0.22)] hover:ring-black/[0.10] focus-visible:shadow-[0_18px_44px_-22px_rgba(11,11,12,0.28)] sm:p-6"
+      className="group relative flex w-full flex-col overflow-hidden rounded-2xl bg-card p-5 ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-22px_rgba(11,11,12,0.22)] hover:ring-black/[0.10]"
     >
       <header className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <span
-            className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em] ${a.chip}`}
-          >
-            <span aria-hidden className={`h-1 w-1 rounded-full ${a.dot}`} />
-            {categoryLabel[example.category]}
-          </span>
-          <h3 className="mt-2.5 font-display text-[17px] font-semibold leading-tight tracking-tight text-ink sm:text-[18px]">
-            {example.outcomeLabel}
-          </h3>
-        </div>
+        <span className="inline-flex h-8 w-8 items-center justify-center">
+          {example.logo ? (
+            <Image
+              src={example.logo}
+              alt={example.logoAlt ?? ""}
+              width={32}
+              height={32}
+              className="h-7 w-7 object-contain"
+              unoptimized
+            />
+          ) : (
+            <FallbackIcon category={example.category} />
+          )}
+        </span>
         <span
           aria-hidden
-          className={`mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full ring-1 transition-transform duration-300 group-hover:translate-x-0.5 ${a.arrowBg} ${a.arrowText}`}
+          className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full ring-1 transition-transform duration-300 group-hover:translate-x-0.5 ${a.arrowBg} ${a.arrowText} ${a.ring}`}
         >
           <svg
             viewBox="0 0 12 12"
@@ -117,8 +121,12 @@ export function ExampleCard({ example }: { example: Example }) {
         </span>
       </header>
 
+      <h3 className="mt-4 font-display text-[17px] font-semibold leading-tight tracking-tight text-ink">
+        {example.outcomeLabel}
+      </h3>
+
       <p
-        className="mt-3 text-[13px] leading-snug text-ink/80 sm:text-[13.5px]"
+        className="mt-1.5 text-[13px] leading-snug text-muted"
         style={{
           display: "-webkit-box",
           WebkitLineClamp: 3,
@@ -127,12 +135,10 @@ export function ExampleCard({ example }: { example: Example }) {
           minHeight: "calc(1.4em * 3)",
         }}
       >
-        <span className={`font-semibold ${a.quote}`}>&ldquo;</span>
-        {example.prompt}
-        <span className={`font-semibold ${a.quote}`}>&rdquo;</span>
+        &ldquo;{example.prompt}&rdquo;
       </p>
 
-      <div className="mt-4 h-[200px] w-full">
+      <div className="mt-4 h-[140px] w-full">
         <Artifact />
       </div>
     </article>
