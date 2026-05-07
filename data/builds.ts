@@ -58,6 +58,15 @@ export const builds: Build[] = [
     label: "Live deployment",
     image: "/builds/cookbook.png",
   },
+  {
+    id: "llm-wiki-setup",
+    kind: "project",
+    title: "LLM wiki setup",
+    blurb:
+      "Spin up a personal LLM-readable knowledge base for topics you care about. Inspired by Karpathy.",
+    url: "https://github.com/ropats16/llm-wiki-setup",
+    label: "Open source",
+  },
 ];
 
 export const recentBuildsAvailability = "Available for new sprints.";
