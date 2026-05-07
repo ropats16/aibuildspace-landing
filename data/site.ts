@@ -2,23 +2,21 @@ export const site = {
   name: "AI Buildspace",
   tagline: "Work smarter with AI",
   description:
-    "Hand-off-able AI workflows for solopreneurs, owners, and founders.",
+    "Custom AI workflows and sessions built around the tools you already use.",
   url: "https://aibuildspace.com",
-  // TODO: replace with real contact email
-  email: "hello@aibuildspace.com",
+  email: "rohit@aibuildspace.com",
   headshot: "/headshot.png",
   social: {
-    // TODO: replace placeholder URLs once handles confirmed
-    substack: "#",
-    instagram: "#",
-    youtube: "#",
-    x: "#",
+    substack: "https://rohit7986.substack.com",
+    instagram: "https://www.instagram.com/aibuildspace/",
+    youtube: "https://www.youtube.com/@aibuildspace/videos",
+    x: "https://x.com/ropats16",
   },
 } as const;
 
 export const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#examples", label: "Examples" },
-  { href: "#watch", label: "Watch" },
+  { href: "#builds", label: "Recent builds" },
   { href: "#about", label: "About" },
 ] as const;
