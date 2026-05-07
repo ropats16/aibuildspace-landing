@@ -1,17 +1,31 @@
 import type { ProcessAccent, ProcessStep } from "@/data/process";
 
-const pastelClass: Record<ProcessAccent, string> = {
-  mint: "pastel-mint",
-  peach: "pastel-peach",
-  lemon: "pastel-lemon",
-  sky: "pastel-sky",
+const accentBadge: Record<ProcessAccent, string> = {
+  teal: "bg-teal-100 text-teal-700",
+  indigo: "bg-indigo-100 text-indigo-700",
+  amber: "bg-amber-100 text-amber-700",
+  rose: "bg-rose-100 text-rose-700",
 };
 
-const pastelInk: Record<ProcessAccent, string> = {
-  mint: "var(--pastel-mint-ink)",
-  peach: "var(--pastel-peach-ink)",
-  lemon: "var(--pastel-lemon-ink)",
-  sky: "var(--pastel-sky-ink)",
+const accentLine: Record<ProcessAccent, string> = {
+  teal: "bg-teal-500",
+  indigo: "bg-indigo-500",
+  amber: "bg-amber-500",
+  rose: "bg-rose-500",
+};
+
+const accentNumeral: Record<ProcessAccent, string> = {
+  teal: "text-teal-700",
+  indigo: "text-indigo-700",
+  amber: "text-amber-700",
+  rose: "text-rose-700",
+};
+
+const accentChip: Record<ProcessAccent, string> = {
+  teal: "bg-teal-50 text-teal-700",
+  indigo: "bg-indigo-50 text-indigo-700",
+  amber: "bg-amber-50 text-amber-700",
+  rose: "bg-rose-50 text-rose-700",
 };
 
 const svgProps = {
@@ -69,22 +83,20 @@ type ProcessCardProps = {
 };
 
 export function ProcessCard({ step, index }: ProcessCardProps) {
-  const ink = pastelInk[step.accent];
   const num = String(index + 1).padStart(2, "0");
 
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card p-6 ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-18px_rgba(11,11,12,0.22),0_2px_8px_rgba(11,11,12,0.04)] hover:ring-black/[0.10] sm:p-7">
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[96px] font-semibold leading-none tabular-nums tracking-[-0.05em] opacity-[0.10] transition-opacity duration-300 group-hover:opacity-[0.18]"
-        style={{ color: ink }}
+        className={`pointer-events-none absolute -right-2 -top-4 select-none font-display text-[96px] font-semibold leading-none tabular-nums tracking-[-0.05em] opacity-15 transition-opacity duration-300 group-hover:opacity-25 ${accentNumeral[step.accent]}`}
       >
         {num}
       </span>
 
       <div className="relative flex items-center justify-between gap-3">
         <span
-          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${pastelClass[step.accent]} transition-transform duration-300 group-hover:-rotate-3`}
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${accentBadge[step.accent]} transition-transform duration-300 group-hover:-rotate-3`}
         >
           <ProcessIcon id={step.id} />
         </span>
@@ -96,8 +108,7 @@ export function ProcessCard({ step, index }: ProcessCardProps) {
 
       <span
         aria-hidden
-        className="relative mt-3 block h-[2px] w-8 rounded-full transition-[width] duration-300 group-hover:w-14"
-        style={{ background: ink }}
+        className={`relative mt-3 block h-[2px] w-8 rounded-full transition-[width] duration-300 group-hover:w-14 ${accentLine[step.accent]}`}
       />
 
       <p className="relative mt-4 text-[15px] leading-relaxed text-ink/85">
@@ -108,7 +119,7 @@ export function ProcessCard({ step, index }: ProcessCardProps) {
 
       <div className="relative mt-6 flex items-center border-t border-border pt-5">
         <span
-          className={`inline-flex items-center rounded-full ${pastelClass[step.accent]} px-2.5 py-1 text-[11px] font-medium tracking-wide`}
+          className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium tracking-wide ${accentChip[step.accent]}`}
         >
           {step.duration}
         </span>

@@ -1,7 +1,7 @@
 export function SlideThumbs() {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
-      <div className="flex items-center justify-between border-b border-black/5 bg-gradient-to-r from-violet-50 to-indigo-50/60 px-3 py-1.5">
+      <div className="flex items-center justify-between border-b border-black/5 bg-violet-50 px-3 py-1.5">
         <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-violet-700/90">
           Investor · Q3
         </span>
@@ -20,7 +20,7 @@ export function SlideThumbs() {
 
 function SlideTitle() {
   return (
-    <div className="flex aspect-[4/3] flex-1 flex-col justify-between overflow-hidden rounded-md bg-gradient-to-br from-violet-600 to-indigo-700 p-1.5">
+    <div className="flex aspect-[4/3] flex-1 flex-col justify-between overflow-hidden rounded-md bg-violet-700 p-1.5">
       <div className="text-[7px] font-medium uppercase tracking-wider text-white/70">Q3</div>
       <div className="text-[8.5px] font-semibold leading-tight text-white">+38%</div>
     </div>
@@ -35,7 +35,7 @@ function SlideChart() {
         <span
           key={i}
           style={{ height: `${h}%` }}
-          className="flex-1 rounded-sm bg-gradient-to-t from-violet-400 to-violet-600"
+          className="flex-1 rounded-sm bg-violet-500"
         />
       ))}
     </div>

@@ -1,7 +1,7 @@
 export function BugReport() {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
-      <div className="flex items-center justify-between border-b border-black/5 bg-gradient-to-r from-red-50 to-rose-50/60 px-3 py-1.5">
+      <div className="flex items-center justify-between border-b border-black/5 bg-red-50 px-3 py-1.5">
         <div className="flex items-center gap-1.5">
           <span className="rounded-md bg-red-100 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-red-700">
             Bug

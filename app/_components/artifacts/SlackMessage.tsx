@@ -1,7 +1,7 @@
 export function SlackMessage() {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
-      <div className="flex items-center justify-between border-b border-black/5 bg-gradient-to-r from-emerald-50 to-teal-50/60 px-3 py-1.5">
+      <div className="flex items-center justify-between border-b border-black/5 bg-emerald-50 px-3 py-1.5">
         <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-emerald-700/90">
           #leadership
         </span>
