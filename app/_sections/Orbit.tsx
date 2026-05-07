@@ -6,31 +6,16 @@ import {
   type Variants,
   useReducedMotion,
 } from "framer-motion";
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { artifactComponents } from "@/app/_components/artifacts";
-import { examples, type Example, type ExampleCategory } from "@/data/examples";
-import { tools, type Tool } from "@/data/tools";
+import { tools, toolsByRing, type Tool, type OrbitRing } from "@/data/tools";
 
-const RING_RADIUS = [22, 35, 47] as const;
-const RING_DURATION = [70, 95, 130] as const;
-const RING_DIRECTION = [1, -1, 1] as const;
+const RING_RADIUS: Record<OrbitRing, number> = { 0: 32, 1: 47 };
+const RING_DURATION: Record<OrbitRing, number> = { 0: 80, 1: 120 };
+const RING_DIRECTION: Record<OrbitRing, 1 | -1> = { 0: 1, 1: -1 };
 
-const CYCLE_MS = 5500;
+const CYCLE_MS = 4500;
 const PIN_MS = 6000;
-
-const categoryDot: Record<ExampleCategory, string> = {
-  mail: "bg-blue-500",
-  deck: "bg-violet-500",
-  slack: "bg-emerald-500",
-  video: "bg-orange-500",
-};
-
-const categoryLabel: Record<ExampleCategory, string> = {
-  mail: "Email",
-  deck: "Document",
-  slack: "Message",
-  video: "Video",
-};
 
 export function Orbit() {
   const reduce = useReducedMotion();
@@ -40,13 +25,7 @@ export function Orbit() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const paused = hovered || pinned;
-
   const activeTool = tools[activeIdx];
-  const activeExample = useMemo<Example>(() => {
-    const found = examples.find((e) => e.id === activeTool.exampleId);
-    if (!found) throw new Error(`Unknown example for tool ${activeTool.id}`);
-    return found;
-  }, [activeTool]);
 
   const advance = useCallback((delta: 1 | -1) => {
     setActiveIdx((i) => (i + delta + tools.length) % tools.length);
@@ -86,7 +65,7 @@ export function Orbit() {
     <div
       ref={containerRef}
       role="region"
-      aria-label="Tools and example workflows. Use left and right arrow keys to cycle."
+      aria-label="Tools and example prompts. Use left and right arrow keys to cycle."
       tabIndex={0}
       onKeyDown={onKeyDown}
       onMouseEnter={() => setHovered(true)}
@@ -98,15 +77,15 @@ export function Orbit() {
         }
       }}
       data-paused={paused || undefined}
-      className="orbit-root relative mx-auto aspect-square w-full max-w-[640px] outline-none"
+      className="orbit-root relative mx-auto aspect-square w-full max-w-[760px] outline-none"
     >
-      {[0, 1, 2].map((ringIdx) => {
+      {([0, 1] as OrbitRing[]).map((ringIdx) => {
         const r = RING_RADIUS[ringIdx];
         return (
           <div
             key={`guide-${ringIdx}`}
             aria-hidden
-            className="orbit-guide pointer-events-none absolute rounded-full border border-dashed border-black/[0.07]"
+            className="pointer-events-none absolute rounded-full border border-dashed border-black/[0.07]"
             style={{
               width: `${r * 2}%`,
               height: `${r * 2}%`,
@@ -117,17 +96,17 @@ export function Orbit() {
         );
       })}
 
-      {[0, 1, 2].map((ringIdx) => (
+      {([0, 1] as OrbitRing[]).map((ringIdx) => (
         <Ring
           key={`ring-${ringIdx}`}
-          ringIdx={ringIdx as 0 | 1 | 2}
+          ringIdx={ringIdx}
           activeId={activeTool.id}
           onActivate={activateById}
           onPin={() => setPinned(true)}
         />
       ))}
 
-      <ActivationOverlay tool={activeTool} example={activeExample} />
+      <ActivationOverlay tool={activeTool} />
     </div>
   );
 }
@@ -138,18 +117,16 @@ function Ring({
   onActivate,
   onPin,
 }: {
-  ringIdx: 0 | 1 | 2;
+  ringIdx: OrbitRing;
   activeId: Tool["id"];
   onActivate: (id: Tool["id"]) => void;
   onPin: () => void;
 }) {
-  const ringTools = useMemo(
-    () => tools.filter((t) => t.ring === ringIdx),
-    [ringIdx]
-  );
+  const ringTools = useMemo(() => toolsByRing[ringIdx], [ringIdx]);
   const radius = RING_RADIUS[ringIdx];
   const duration = RING_DURATION[ringIdx];
   const direction = RING_DIRECTION[ringIdx];
+  const angleOffset = ringIdx === 1 ? 45 : 0;
 
   return (
     <div
@@ -162,7 +139,8 @@ function Ring({
       }
     >
       {ringTools.map((tool, i) => {
-        const angle = (i / ringTools.length) * 360 - 90;
+        const angle =
+          (i / ringTools.length) * 360 - 90 + angleOffset;
         const cx = 50 + Math.cos((angle * Math.PI) / 180) * radius;
         const cy = 50 + Math.sin((angle * Math.PI) / 180) * radius;
         return (
@@ -214,19 +192,18 @@ function ToolNode({
           }}
           onPointerEnter={() => onActivate(tool.id)}
           onFocus={() => onActivate(tool.id)}
-          aria-label={`${tool.name} — show example workflow`}
+          aria-label={`${tool.name} — show example prompt`}
           aria-pressed={isActive}
           data-active={isActive || undefined}
-          className="orbit-node relative flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink shadow-[0_1px_3px_rgba(11,11,12,0.08),0_0_0_1px_rgba(11,11,12,0.05)] transition-[transform,box-shadow,background-color,opacity] duration-300 hover:scale-110 sm:h-10 sm:w-10 lg:h-11 lg:w-11"
+          className="orbit-node relative flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14 lg:h-16 lg:w-16"
         >
-          <span
-            aria-hidden
-            className="orbit-logo block h-5 w-5 sm:h-[22px] sm:w-[22px] lg:h-6 lg:w-6"
-            style={
-              {
-                "--orbit-logo-src": `url(${tool.logo})`,
-              } as React.CSSProperties
-            }
+          <Image
+            src={tool.logo}
+            alt=""
+            width={36}
+            height={36}
+            className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9"
+            unoptimized
           />
         </button>
       </div>
@@ -235,30 +212,22 @@ function ToolNode({
 }
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 14, scale: 0.94 },
+  hidden: { opacity: 0, y: 10, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
   exit: {
     opacity: 0,
-    y: -10,
+    y: -8,
     scale: 0.97,
-    transition: { duration: 0.3, ease: [0.4, 0, 1, 1] },
+    transition: { duration: 0.25, ease: [0.4, 0, 1, 1] },
   },
 };
 
-function ActivationOverlay({
-  tool,
-  example,
-}: {
-  tool: Tool;
-  example: Example;
-}) {
-  const Artifact = artifactComponents[example.artifact];
-
+function ActivationOverlay({ tool }: { tool: Tool }) {
   return (
     <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4">
       <AnimatePresence mode="wait">
@@ -268,42 +237,30 @@ function ActivationOverlay({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="pointer-events-auto relative w-[80%] max-w-[420px] sm:w-[68%]"
+          className="pointer-events-auto w-[70%] max-w-[360px] sm:w-[56%]"
         >
-          <article
-            className="rounded-2xl bg-card/95 p-4 ring-1 ring-black/[0.06] shadow-[0_12px_36px_-18px_rgba(11,11,12,0.30),0_2px_6px_rgba(11,11,12,0.06)] backdrop-blur-sm sm:p-5"
-            style={{
-              backgroundImage: `radial-gradient(120% 90% at 50% 0%, var(--glow-${example.category}) 0%, transparent 70%)`,
-            }}
-          >
-            <header className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <span
-                  aria-hidden
-                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-ink ring-1 ring-black/[0.08] shadow-[0_1px_2px_rgba(11,11,12,0.06)]"
-                >
-                  <span
-                    aria-hidden
-                    className="orbit-logo block h-4 w-4"
-                    style={
-                      {
-                        "--orbit-logo-src": `url(${tool.logo})`,
-                      } as React.CSSProperties
-                    }
-                  />
+          <article className="rounded-2xl bg-white/95 p-4 ring-1 ring-black/[0.06] shadow-[0_18px_48px_-22px_rgba(11,11,12,0.30),0_2px_6px_rgba(11,11,12,0.05)] backdrop-blur-sm sm:p-5">
+            <header className="flex items-center gap-2.5">
+              <span
+                aria-hidden
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.06)]"
+              >
+                <Image
+                  src={tool.logo}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                  unoptimized
+                />
+              </span>
+              <div className="flex flex-col leading-tight">
+                <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+                  Prompt
                 </span>
-                <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
-                    Prompt · {tool.name}
-                  </span>
-                  <span className="flex items-center gap-1 text-[10px] text-muted/70">
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full ${categoryDot[example.category]}`}
-                      aria-hidden
-                    />
-                    {categoryLabel[example.category]}
-                  </span>
-                </div>
+                <span className="text-[12px] font-semibold text-ink">
+                  {tool.name}
+                </span>
               </div>
             </header>
 
@@ -311,27 +268,13 @@ function ActivationOverlay({
               key={`prompt-${tool.id}`}
               initial={{ clipPath: "inset(0 100% 0 0)" }}
               animate={{ clipPath: "inset(0 0% 0 0)" }}
-              transition={{ duration: 1.1, ease: [0.4, 0, 0.2, 1], delay: 0.15 }}
-              className="mt-3 text-[13px] font-medium leading-snug text-ink sm:text-sm"
+              transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
+              className="mt-3 text-[14px] font-medium leading-snug text-ink sm:text-[15px]"
             >
               <span className="text-muted">&ldquo;</span>
-              {example.prompt}
+              {tool.prompt}
               <span className="text-muted">&rdquo;</span>
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20, scale: 0.96 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 10 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.5,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="mt-4 rounded-xl p-2 sm:p-3"
-            >
-              <Artifact />
-            </motion.div>
           </article>
         </motion.div>
       </AnimatePresence>

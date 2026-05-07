@@ -1,39 +1,73 @@
-import type { Example } from "./examples";
-
-export type OrbitRing = 0 | 1 | 2;
+export type OrbitRing = 0 | 1;
 
 export type Tool = {
   id: string;
   name: string;
   logo: string;
   ring: OrbitRing;
-  exampleId: Example["id"];
+  prompt: string;
 };
 
 export const tools: Tool[] = [
-  { id: "claude", name: "Claude", logo: "/logos/claude.svg", ring: 0, exampleId: "crm-report" },
-  { id: "codex", name: "OpenAI Codex", logo: "/logos/codex.svg", ring: 0, exampleId: "inbox-triage" },
-  { id: "chatgpt", name: "ChatGPT", logo: "/logos/chatgpt.svg", ring: 0, exampleId: "morning-brief" },
-
-  { id: "gmail", name: "Gmail", logo: "/logos/gmail.svg", ring: 1, exampleId: "morning-brief" },
-  { id: "gcal", name: "Google Calendar", logo: "/logos/gcal.svg", ring: 1, exampleId: "morning-brief" },
-  { id: "slack", name: "Slack", logo: "/logos/slack.svg", ring: 1, exampleId: "weekly-slack" },
-  { id: "notion", name: "Notion", logo: "/logos/notion.svg", ring: 1, exampleId: "crm-report" },
-  { id: "gdrive", name: "Google Drive", logo: "/logos/gdrive.svg", ring: 1, exampleId: "investor-deck" },
-  { id: "granola", name: "Granola", logo: "/logos/granola.svg", ring: 1, exampleId: "morning-brief" },
-  { id: "jira", name: "Jira", logo: "/logos/jira.svg", ring: 1, exampleId: "weekly-slack" },
-
-  { id: "lovable", name: "Lovable", logo: "/logos/lovable.svg", ring: 2, exampleId: "investor-deck" },
-  { id: "replit", name: "Replit", logo: "/logos/replit.svg", ring: 2, exampleId: "inbox-triage" },
-  { id: "cal", name: "Cal.com", logo: "/logos/cal.svg", ring: 2, exampleId: "morning-brief" },
-  { id: "heygen", name: "HeyGen", logo: "/logos/heygen.svg", ring: 2, exampleId: "vertical-reel" },
-  { id: "elevenlabs", name: "ElevenLabs", logo: "/logos/elevenlabs.svg", ring: 2, exampleId: "vertical-reel" },
-  { id: "midjourney", name: "Midjourney", logo: "/logos/midjourney.svg", ring: 2, exampleId: "investor-deck" },
-  { id: "runway", name: "Runway", logo: "/logos/runway.svg", ring: 2, exampleId: "vertical-reel" },
+  {
+    id: "gmail",
+    name: "Gmail",
+    logo: "/logos/gmail.svg",
+    ring: 0,
+    prompt: "Triage my inbox at 9am and draft replies to the urgent thread.",
+  },
+  {
+    id: "notion",
+    name: "Notion",
+    logo: "/logos/notion.svg",
+    ring: 0,
+    prompt: "Turn today's meeting notes into a project doc with action items.",
+  },
+  {
+    id: "word",
+    name: "Microsoft Word",
+    logo: "/logos/word.svg",
+    ring: 0,
+    prompt: "Draft a 2-page client proposal in our brand voice.",
+  },
+  {
+    id: "slack",
+    name: "Slack",
+    logo: "/logos/slack.svg",
+    ring: 0,
+    prompt: "Post Monday's GA4 + Stripe summary into #leadership.",
+  },
+  {
+    id: "gcal",
+    name: "Google Calendar",
+    logo: "/logos/gcal.svg",
+    ring: 1,
+    prompt: "Block deep-work hours around tomorrow's meetings.",
+  },
+  {
+    id: "powerpoint",
+    name: "PowerPoint",
+    logo: "/logos/powerpoint.svg",
+    ring: 1,
+    prompt: "Convert this report into a 10-slide investor deck.",
+  },
+  {
+    id: "excel",
+    name: "Microsoft Excel",
+    logo: "/logos/excel.svg",
+    ring: 1,
+    prompt: "Build a P&L model from last quarter's transactions.",
+  },
+  {
+    id: "gdrive",
+    name: "Google Drive",
+    logo: "/logos/gdrive.svg",
+    ring: 1,
+    prompt: "File this contract under /Clients with a 5-line summary.",
+  },
 ];
 
 export const toolsByRing: Record<OrbitRing, Tool[]> = {
   0: tools.filter((t) => t.ring === 0),
   1: tools.filter((t) => t.ring === 1),
-  2: tools.filter((t) => t.ring === 2),
 };
