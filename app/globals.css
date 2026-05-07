@@ -9,6 +9,20 @@
   --accent: #2547D0;
   --accent-ink: #FFFFFF;
 
+  /* Pastel palette for workflow cards */
+  --pastel-mint: #DCEFE2;
+  --pastel-mint-ink: #0E5132;
+  --pastel-peach: #FBE3D6;
+  --pastel-peach-ink: #8A3B14;
+  --pastel-lemon: #F4EFC8;
+  --pastel-lemon-ink: #6E5A12;
+  --pastel-rose: #F7DCE2;
+  --pastel-rose-ink: #8A2A45;
+  --pastel-sky: #DCEAF4;
+  --pastel-sky-ink: #1F4E78;
+  --pastel-lilac: #E6E0F4;
+  --pastel-lilac-ink: #463579;
+
   --glow-mail: rgba(37, 71, 208, 0.10);
   --glow-deck: rgba(124, 58, 237, 0.10);
   --glow-slack: rgba(34, 139, 90, 0.10);
@@ -68,10 +82,6 @@ h1, h2, h3, h4, .font-display {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-@keyframes orbit-spin-rev {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
 
 .orbit-ring {
   animation: orbit-spin var(--orbit-duration, 90s) linear infinite;
@@ -81,10 +91,13 @@ h1, h2, h3, h4, .font-display {
 }
 
 .orbit-counter {
-  animation: orbit-spin-rev var(--orbit-duration, 90s) linear infinite;
+  animation: orbit-spin var(--orbit-duration, 90s) linear infinite reverse;
   animation-direction: var(--orbit-direction, normal);
   transform-origin: center;
   will-change: transform;
+}
+.orbit-ring[style*="reverse"] .orbit-counter {
+  animation-direction: normal;
 }
 
 .orbit-root[data-paused] .orbit-ring,
@@ -92,32 +105,29 @@ h1, h2, h3, h4, .font-display {
   animation-play-state: paused;
 }
 
-.orbit-logo {
-  background-color: currentColor;
-  -webkit-mask-image: var(--orbit-logo-src);
-          mask-image: var(--orbit-logo-src);
-  -webkit-mask-size: contain;
-          mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
-}
-
 .orbit-node {
-  color: var(--ink);
-  opacity: 0.78;
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(11, 11, 12, 0.05),
+    0 6px 18px -10px rgba(11, 11, 12, 0.18),
+    0 0 0 1px rgba(11, 11, 12, 0.05);
+  transition: transform 220ms ease, box-shadow 260ms ease;
 }
 .orbit-node:hover,
 .orbit-node:focus-visible {
-  opacity: 1;
+  transform: scale(1.06);
 }
 .orbit-node[data-active] {
-  opacity: 1;
-  background: var(--accent);
-  color: var(--accent-ink);
+  transform: scale(1.10);
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent),
-    0 8px 24px -6px color-mix(in srgb, var(--accent) 45%, transparent),
-    0 1px 2px rgba(11, 11, 12, 0.10);
+    0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent),
+    0 14px 32px -10px rgba(11, 11, 12, 0.25),
+    0 0 0 1px rgba(11, 11, 12, 0.06);
 }
+
+.pastel-mint   { background: var(--pastel-mint);   color: var(--pastel-mint-ink); }
+.pastel-peach  { background: var(--pastel-peach);  color: var(--pastel-peach-ink); }
+.pastel-lemon  { background: var(--pastel-lemon);  color: var(--pastel-lemon-ink); }
+.pastel-rose   { background: var(--pastel-rose);   color: var(--pastel-rose-ink); }
+.pastel-sky    { background: var(--pastel-sky);    color: var(--pastel-sky-ink); }
+.pastel-lilac  { background: var(--pastel-lilac);  color: var(--pastel-lilac-ink); }
