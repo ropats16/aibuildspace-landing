@@ -1,4 +1,4 @@
-export type ExampleCategory = "mail" | "deck" | "slack" | "video";
+export type ExampleCategory = "mail" | "deck" | "slack" | "video" | "code";
 
 export type ExampleTone =
   | "mint"
@@ -14,7 +14,9 @@ export type ArtifactType =
   | "slide-thumbs"
   | "inbox-mock"
   | "video-frame"
-  | "slack-message";
+  | "slack-message"
+  | "pr-description"
+  | "bug-report";
 
 export type Example = {
   id: string;
@@ -29,56 +31,74 @@ export const examples: Example[] = [
   {
     id: "morning-brief",
     prompt:
-      "Brief me at 7am every weekday: top 5 unread emails, today's calendar, urgent Slack threads.",
+      "Send me a 7am summary of yesterday's revenue, today's calendar, and any urgent emails I missed.",
     category: "mail",
     tone: "peach",
     artifact: "email-digest",
-    outcomeLabel: "Morning briefing",
-  },
-  {
-    id: "crm-report",
-    prompt:
-      "Compare the top 5 CRMs for our 20-person retail team and produce a 2-page report with pricing.",
-    category: "deck",
-    tone: "mint",
-    artifact: "report-mock",
-    outcomeLabel: "2-page comparison report",
-  },
-  {
-    id: "investor-deck",
-    prompt:
-      "Turn last quarter's traffic data into a 10-slide investor update on our brand template.",
-    category: "deck",
-    tone: "lemon",
-    artifact: "slide-thumbs",
-    outcomeLabel: "10-slide investor update",
+    outcomeLabel: "Morning brief",
   },
   {
     id: "inbox-triage",
     prompt:
-      "Hourly: triage my inbox, draft replies for the urgent bucket, archive newsletters.",
+      "Sort my inbox into reply-now, reply-later, and archive. Draft replies for the urgent ones in my voice.",
     category: "mail",
     tone: "rose",
     artifact: "inbox-mock",
-    outcomeLabel: "Triaged inbox with drafts",
+    outcomeLabel: "Inbox triage",
+  },
+  {
+    id: "investor-deck",
+    prompt:
+      "Turn last quarter's metrics into a 10-slide investor update on our brand template.",
+    category: "deck",
+    tone: "lemon",
+    artifact: "slide-thumbs",
+    outcomeLabel: "Investor update",
+  },
+  {
+    id: "customer-research",
+    prompt:
+      "Read every support ticket from last month and pull the top 5 complaints with example quotes.",
+    category: "deck",
+    tone: "mint",
+    artifact: "report-mock",
+    outcomeLabel: "Top complaints",
   },
   {
     id: "vertical-reel",
     prompt:
-      "Make a 30s vertical reel of our product update using my HeyGen avatar + ElevenLabs voice.",
+      "Make a 30-second vertical reel of our product update using my HeyGen avatar and ElevenLabs voice.",
     category: "video",
     tone: "lilac",
     artifact: "video-frame",
-    outcomeLabel: "30s vertical reel",
+    outcomeLabel: "Vertical reel",
   },
   {
     id: "weekly-slack",
     prompt:
-      "Every Monday, post a 5-bullet GA4 + Stripe summary into #leadership on Slack.",
+      "Every Monday, post a 5-bullet summary of GA4 and Stripe into #leadership on Slack.",
     category: "slack",
     tone: "sky",
     artifact: "slack-message",
-    outcomeLabel: "Monday metrics post",
+    outcomeLabel: "Monday metrics",
+  },
+  {
+    id: "pr-description",
+    prompt:
+      "Read the diff on this branch, write a PR description with a summary, test plan, and screenshots if relevant.",
+    category: "code",
+    tone: "peach",
+    artifact: "pr-description",
+    outcomeLabel: "PR description",
+  },
+  {
+    id: "support-bug",
+    prompt:
+      "Take this Slack support thread and turn it into a bug report with reproduction steps, expected vs actual, severity.",
+    category: "code",
+    tone: "mint",
+    artifact: "bug-report",
+    outcomeLabel: "Bug report",
   },
 ];
 

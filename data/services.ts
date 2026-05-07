@@ -24,7 +24,7 @@ export const services: Service[] = [
     meta: "1:1",
     duration: "60–90 min",
     description:
-      "Walk through your most-pressing AI question with someone who builds for a living.",
+      "Walk through your most pressing AI question with someone who builds for a living.",
     bullets: [
       "Pick the right entry point for your stack",
       "Map the cheapest first workflow",
@@ -36,11 +36,11 @@ export const services: Service[] = [
     id: "workshop",
     name: "Workshop",
     duration: "Half- or full-day",
-    description: "Hands-on. We build a working system together — live.",
+    description: "Hands on. We build a working system together, live.",
     bullets: [
       "We pick one real workflow and ship it",
       "Built on your tools, your data",
-      "Recording + docs so you can rerun it later",
+      "Recording and docs so you can rerun it later",
     ],
     cta: "Book a workshop",
     variants: [
@@ -49,11 +49,11 @@ export const services: Service[] = [
         label: "1:1",
         duration: "Half- or full-day",
         description:
-          "Just you and me. We build one workflow end-to-end on your stack.",
+          "Just you and me. We build one workflow end to end on your stack.",
         bullets: [
-          "Focused on your highest-leverage problem",
+          "Focused on the workflow that drains the most time",
           "Built live in your tools, with your data",
-          "Recording + handoff doc so you can rerun it",
+          "Recording and handoff doc so you can rerun it",
         ],
       },
       {
@@ -61,7 +61,7 @@ export const services: Service[] = [
         label: "Team (2–15)",
         duration: "Half- or full-day",
         description:
-          "Your team builds the same workflow together — everyone leaves shipping.",
+          "Your team builds the same workflow together. Everyone leaves shipping.",
         bullets: [
           "Pre-call to scope the right workflow for the group",
           "Hands-on build, not slides",
@@ -76,9 +76,9 @@ export const services: Service[] = [
     meta: "Fixed scope",
     duration: "1–2 weeks",
     description:
-      "One automation, skill, or lightweight dashboard — shipped and yours.",
+      "One automation, skill, or lightweight dashboard. Shipped and yours.",
     bullets: [
-      "Single-source workflow on Claude/Codex you control",
+      "Single-source workflow built on Claude Code or Codex CLI that you control",
       "Documented so a non-engineer can tweak it",
       "Bigger needs split into sequential sprints",
     ],
