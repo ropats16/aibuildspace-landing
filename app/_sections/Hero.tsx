@@ -16,7 +16,7 @@ export function Hero() {
               width={384}
               height={384}
               priority
-              className="mx-auto mb-6 h-36 w-36 rounded-full object-cover ring-4 ring-white shadow-[0_10px_32px_-10px_rgba(11,11,12,0.22),0_2px_6px_rgba(11,11,12,0.06)] sm:mb-7 sm:h-44 sm:w-44 lg:mx-0 lg:h-48 lg:w-48"
+              className="mx-auto mb-6 h-40 w-40 rounded-full object-cover ring-4 ring-white shadow-[0_10px_32px_-10px_rgba(11,11,12,0.22),0_2px_6px_rgba(11,11,12,0.06)] sm:mb-7 sm:h-52 sm:w-52 lg:mx-0 lg:h-56 lg:w-56"
             />
             <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
               Work smarter with AI.
