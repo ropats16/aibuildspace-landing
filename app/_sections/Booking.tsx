@@ -1,6 +1,7 @@
 import { CalEmbedLazy } from "@/app/_components/CalEmbedLazy";
 import { Container } from "@/app/_components/Container";
-import { LeadForm } from "@/app/_components/LeadForm";
+// Lead form temporarily disabled until Resend domain + inbox are set up.
+// import { LeadForm } from "@/app/_components/LeadForm";
 
 export function Booking() {
   return (
@@ -9,7 +10,7 @@ export function Booking() {
         <div className="max-w-3xl">
           <p className="mb-4 text-xs tracking-[0.18em] text-muted">Book</p>
           <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-            Book a call, or describe your problem first.
+            Book a call.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">
             15–30 minute discovery call. No prep needed. Show up with the
@@ -17,11 +18,11 @@ export function Booking() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-6 lg:mt-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+        <div className="mt-8 lg:mt-10">
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <CalEmbedLazy />
           </div>
-          <LeadForm />
+          {/* <LeadForm /> */}
         </div>
       </Container>
     </section>
