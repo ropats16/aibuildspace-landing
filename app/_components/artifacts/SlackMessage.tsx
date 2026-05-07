@@ -26,7 +26,7 @@ export function SlackMessage() {
             <span className="text-[9px] text-muted">9:00 AM</span>
           </div>
           <div className="mt-0.5 text-[11px] text-ink">
-            Last week — quick read:
+            Last week, quick read:
           </div>
           <ul className="mt-1.5 space-y-0.5 text-[10.5px] leading-snug text-ink/85">
             <li>• Sessions <span className="font-medium tabular-nums text-emerald-700">+12.4%</span> WoW</li>

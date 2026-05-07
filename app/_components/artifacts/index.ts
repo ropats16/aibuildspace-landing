@@ -1,12 +1,23 @@
 import type { ArtifactType } from "@/data/examples";
+import { BugReport } from "./BugReport";
 import { EmailDigest } from "./EmailDigest";
 import { InboxMock } from "./InboxMock";
+import { PrDescription } from "./PrDescription";
 import { ReportMock } from "./ReportMock";
 import { SlackMessage } from "./SlackMessage";
 import { SlideThumbs } from "./SlideThumbs";
 import { VideoFrame } from "./VideoFrame";
 
-export { EmailDigest, InboxMock, ReportMock, SlackMessage, SlideThumbs, VideoFrame };
+export {
+  BugReport,
+  EmailDigest,
+  InboxMock,
+  PrDescription,
+  ReportMock,
+  SlackMessage,
+  SlideThumbs,
+  VideoFrame,
+};
 
 export const artifactComponents: Record<ArtifactType, React.ComponentType> = {
   "email-digest": EmailDigest,
@@ -15,4 +26,6 @@ export const artifactComponents: Record<ArtifactType, React.ComponentType> = {
   "inbox-mock": InboxMock,
   "video-frame": VideoFrame,
   "slack-message": SlackMessage,
+  "pr-description": PrDescription,
+  "bug-report": BugReport,
 };

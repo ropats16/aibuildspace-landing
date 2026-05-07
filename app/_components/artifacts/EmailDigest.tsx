@@ -12,7 +12,7 @@ export function EmailDigest() {
       <div className="space-y-2 px-4 py-3 text-[11px] leading-tight">
         <Row dot="bg-blue-500" label="Mail" detail="5 unread · 2 flagged" />
         <Row dot="bg-violet-500" label="Calendar" detail="3 meetings · 9:00, 11:30, 14:00" />
-        <Row dot="bg-emerald-500" label="Slack" detail="#engineering — 4 new threads" />
+        <Row dot="bg-emerald-500" label="Slack" detail="#engineering, 4 new threads" />
       </div>
     </div>
   );

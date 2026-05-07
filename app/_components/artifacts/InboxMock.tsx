@@ -13,7 +13,7 @@ export function InboxMock() {
         <Row
           highlighted
           from="Maya Patel"
-          subject="Re: contract — needs signature"
+          subject="Re: contract, needs signature"
           tag="Drafted"
           tagClass="bg-blue-100 text-blue-700"
         />
