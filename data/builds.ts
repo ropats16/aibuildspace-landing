@@ -8,6 +8,7 @@ export type Build = {
   url: string;
   videoId?: string;
   label?: string;
+  image?: string;
 };
 
 export const builds: Build[] = [
@@ -45,6 +46,7 @@ export const builds: Build[] = [
       "Inspect what your prompt actually sends to the model. Run it in the browser.",
     url: "https://prompt-xray-tool.vercel.app/",
     label: "Live tool",
+    image: "/builds/prompt-xray.png",
   },
   {
     id: "permaweb-cookbook-i18n",
@@ -54,6 +56,7 @@ export const builds: Build[] = [
       "Live English to Spanish and Chinese translation across the Arweave developer docs.",
     url: "https://cookbook.arweave.net/",
     label: "Live deployment",
+    image: "/builds/cookbook.png",
   },
 ];
 

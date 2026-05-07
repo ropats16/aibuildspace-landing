@@ -6,7 +6,7 @@ export function RecentBuilds() {
   return (
     <Section
       id="builds"
-      eyebrow="Recent builds"
+      eyebrow="In the wild"
       title="Workshops, live tools, and shipped projects."
       lede="A mix of public teaching and real systems. Each card links to the actual thing."
     >

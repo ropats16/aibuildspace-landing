@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Build, youtubeThumbnail } from "@/data/builds";
+import { getOgImage } from "@/app/_lib/og";
 
-export function BuildTile({ build }: { build: Build }) {
+export async function BuildTile({ build }: { build: Build }) {
+  const previewImage =
+    build.kind === "video"
+      ? null
+      : (build.image ?? (await getOgImage(build.url)));
+
   return (
     <Link
       href={build.url}
@@ -14,7 +20,11 @@ export function BuildTile({ build }: { build: Build }) {
       {build.kind === "video" && build.videoId ? (
         <VideoThumb videoId={build.videoId} />
       ) : (
-        <LinkThumb url={build.url} label={build.label ?? "Live"} />
+        <LinkThumb
+          url={build.url}
+          label={build.label ?? "Live"}
+          previewImage={previewImage}
+        />
       )}
       <div className="flex flex-col gap-1 px-1 pb-1">
         <h3 className="font-display text-base font-semibold leading-snug tracking-tight text-ink sm:text-lg">
@@ -59,8 +69,42 @@ function VideoThumb({ videoId }: { videoId: string }) {
   );
 }
 
-function LinkThumb({ url, label }: { url: string; label: string }) {
+function LinkThumb({
+  url,
+  label,
+  previewImage,
+}: {
+  url: string;
+  label: string;
+  previewImage: string | null;
+}) {
   const host = stripHost(url);
+
+  if (previewImage) {
+    return (
+      <div className="relative overflow-hidden rounded-xl bg-ink/5 aspect-video">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={previewImage}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0 opacity-80"
+        />
+        <span className="absolute bottom-2 left-2 rounded-md bg-white/90 px-1.5 py-0.5 text-[10px] font-medium tracking-wide text-ink">
+          {host}
+        </span>
+        <span className="absolute bottom-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white">
+          {label}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div
       className="relative flex aspect-video items-center justify-center overflow-hidden rounded-xl"

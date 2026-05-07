@@ -6,7 +6,7 @@ export function Examples() {
   return (
     <Section
       id="examples"
-      eyebrow="Examples"
+      eyebrow="Things you could ask for"
       title="Eight example workflows."
       lede="Each card is a prompt for a workflow you might find yourself performing regularly."
     >
