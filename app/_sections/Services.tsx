@@ -1,4 +1,7 @@
-import { PlaceholderNote, Section } from "@/app/_components/Section";
+import { Section } from "@/app/_components/Section";
+import { ServiceTile } from "@/app/_components/ServiceTile";
+import { WorkshopTile } from "@/app/_components/WorkshopTile";
+import { services } from "@/data/services";
 
 export function Services() {
   return (
@@ -6,12 +9,26 @@ export function Services() {
       id="services"
       eyebrow="Services"
       title="Pick the entry point that fits."
-      lede="Intro · Workshop · Custom Build Sprint · Optional Retainer. Quote on call."
+      lede="Start small, go deeper when it earns it. Pricing is quote-based and scoped on the call — no hidden surprises."
     >
-      <PlaceholderNote>
-        Four-tier service ladder with workshop 1:1 / Team toggle ships in
-        Phase 4. Each tile CTAs to <code className="rounded bg-border/40 px-1">#book</code>.
-      </PlaceholderNote>
+      <ul className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-14 lg:grid-cols-4">
+        {services.map((service) => (
+          <li key={service.id}>
+            {service.id === "workshop" ? (
+              <WorkshopTile service={service} />
+            ) : (
+              <ServiceTile
+                name={service.name}
+                meta={service.meta}
+                duration={service.duration}
+                description={service.description}
+                bullets={service.bullets}
+                cta={service.cta}
+              />
+            )}
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
