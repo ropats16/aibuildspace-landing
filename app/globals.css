@@ -63,3 +63,61 @@ h1, h2, h3, h4, .font-display {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-spin-rev {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.orbit-ring {
+  animation: orbit-spin var(--orbit-duration, 90s) linear infinite;
+  animation-direction: var(--orbit-direction, normal);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.orbit-counter {
+  animation: orbit-spin-rev var(--orbit-duration, 90s) linear infinite;
+  animation-direction: var(--orbit-direction, normal);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.orbit-root[data-paused] .orbit-ring,
+.orbit-root[data-paused] .orbit-counter {
+  animation-play-state: paused;
+}
+
+.orbit-logo {
+  background-color: currentColor;
+  -webkit-mask-image: var(--orbit-logo-src);
+          mask-image: var(--orbit-logo-src);
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+
+.orbit-node {
+  color: var(--ink);
+  opacity: 0.78;
+}
+.orbit-node:hover,
+.orbit-node:focus-visible {
+  opacity: 1;
+}
+.orbit-node[data-active] {
+  opacity: 1;
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 8px 24px -6px color-mix(in srgb, var(--accent) 45%, transparent),
+    0 1px 2px rgba(11, 11, 12, 0.10);
+}

@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/app/_components/Container";
-import { ExampleCard } from "@/app/_components/ExampleCard";
-import { heroExamples } from "@/data/examples";
+import { HeroVisual } from "./HeroVisual";
 import { site } from "@/data/site";
 
 export function Hero() {
@@ -53,15 +52,11 @@ export function Hero() {
         <div className="mt-16 sm:mt-20 lg:mt-24">
           <div className="mb-6 flex items-center gap-3">
             <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted">
-              Recent builds
+              Tools in the orbit
             </span>
             <span className="h-px flex-1 bg-border" aria-hidden />
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
-            {heroExamples.map((example) => (
-              <ExampleCard key={example.id} example={example} />
-            ))}
-          </div>
+          <HeroVisual />
         </div>
       </Container>
     </section>
