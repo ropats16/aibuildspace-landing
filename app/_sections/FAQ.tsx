@@ -9,7 +9,7 @@ export function FAQ() {
       title="The straight answers."
       lede="Pricing, timelines, what I don't build, tools, handoff, NDAs."
     >
-      <ul className="mt-12 divide-y divide-border/60 border-y border-border/60 lg:mt-14">
+      <ul className="mt-8 divide-y divide-border/60 border-y border-border/60 lg:mt-10">
         {faq.map((item) => (
           <li key={item.id}>
             <details className="group py-5 sm:py-6">

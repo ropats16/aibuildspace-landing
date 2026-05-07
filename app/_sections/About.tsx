@@ -25,7 +25,7 @@ export function About() {
       title="Rohit + AI Buildspace."
       lede="The story behind the studio, and how to find me elsewhere."
     >
-      <div className="mt-12 grid items-start gap-10 sm:grid-cols-[200px_1fr] sm:gap-12 lg:mt-14 lg:grid-cols-[260px_1fr] lg:gap-16">
+      <div className="mt-8 grid items-start gap-10 sm:grid-cols-[200px_1fr] sm:gap-12 lg:mt-10 lg:grid-cols-[260px_1fr] lg:gap-16">
         <div className="flex justify-center sm:block">
           <div className="relative h-44 w-44 overflow-hidden rounded-2xl ring-1 ring-black/[0.06] shadow-[0_8px_28px_-12px_rgba(11,11,12,0.18)] sm:h-48 sm:w-48 lg:h-60 lg:w-60">
             <Image

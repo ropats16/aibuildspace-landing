@@ -4,7 +4,7 @@ import { LeadForm } from "@/app/_components/LeadForm";
 
 export function Booking() {
   return (
-    <section id="book" className="scroll-mt-20 py-24 sm:py-28 lg:py-32">
+    <section id="book" className="scroll-mt-20 py-14 sm:py-16 lg:py-20">
       <Container>
         <div className="max-w-3xl">
           <p className="mb-4 text-xs uppercase tracking-[0.18em] text-muted">
@@ -19,7 +19,7 @@ export function Booking() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+        <div className="mt-8 grid gap-6 lg:mt-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <CalEmbedLazy />
           </div>

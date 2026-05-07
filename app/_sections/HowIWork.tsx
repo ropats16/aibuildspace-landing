@@ -9,7 +9,7 @@ export function HowIWork() {
       title="Hand-off-able. Focused. Custom over locked-in."
       lede="Three principles that shape every engagement — the moat against vendor-locked agent platforms."
     >
-      <ul className="mt-12 grid gap-4 sm:gap-5 lg:mt-14 lg:grid-cols-3">
+      <ul className="mt-8 grid gap-4 sm:gap-5 lg:mt-10 lg:grid-cols-3">
         {principles.map((p, i) => (
           <li
             key={p.id}

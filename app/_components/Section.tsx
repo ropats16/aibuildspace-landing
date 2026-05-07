@@ -19,7 +19,7 @@ export function Section({
   className = "",
 }: SectionProps) {
   return (
-    <section id={id} className={`scroll-mt-20 py-24 sm:py-28 lg:py-32 ${className}`}>
+    <section id={id} className={`scroll-mt-20 py-14 sm:py-16 lg:py-20 ${className}`}>
       <Container>
         <div className="max-w-3xl">
           {eyebrow && (
