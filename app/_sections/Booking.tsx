@@ -3,6 +3,7 @@
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { Container } from "@/app/_components/Container";
+import { LeadForm } from "@/app/_components/LeadForm";
 import { calLink, calNamespace } from "@/data/booking";
 
 export function Booking() {
@@ -37,7 +38,7 @@ export function Booking() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mt-12 grid gap-6 lg:mt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <Cal
               namespace={calNamespace}
@@ -46,10 +47,7 @@ export function Booking() {
               config={{ layout: "month_view" }}
             />
           </div>
-          <div className="rounded-2xl border border-dashed border-border bg-card/50 p-8 text-sm text-muted">
-            Async lead form (name, email, project description, data sources)
-            ships in Phase 7. Posts to <code className="rounded bg-border/40 px-1">/api/lead</code> via Resend.
-          </div>
+          <LeadForm />
         </div>
       </Container>
     </section>
