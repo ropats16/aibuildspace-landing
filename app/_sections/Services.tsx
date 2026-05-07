@@ -12,14 +12,8 @@ export function Services() {
     >
       <ul className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-10 lg:grid-cols-4">
         {services.map((service) => (
-          <li key={service.id}>
-            <ServiceTile
-              name={service.name}
-              duration={service.duration}
-              description={service.description}
-              bullets={service.bullets}
-              cta={service.cta}
-            />
+          <li key={service.id} className="h-full">
+            <ServiceTile service={service} />
           </li>
         ))}
       </ul>
