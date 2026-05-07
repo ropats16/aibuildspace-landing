@@ -22,9 +22,9 @@ export function Hero() {
               Work smarter with AI.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-              Custom AI workflows and live sessions, built around the tools you
-              already use, so you save time and stay in control of what gets
-              shipped.
+              I build custom AI workflows and deliver live sessions, tailored
+              around the tools you already use, so you save time and stay in
+              control of what gets shipped.
             </p>
 
             <div className="mt-7">

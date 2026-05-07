@@ -5,9 +5,9 @@ export function Wordmark({ href = "#top" }: { href?: string }) {
     <Link
       href={href}
       className="font-display text-[1.0625rem] font-semibold tracking-tight text-ink hover:opacity-80"
-      aria-label="AI Buildspace, back to top"
+      aria-label="Rohit, back to top"
     >
-      AI Buildspace
+      Rohit
     </Link>
   );
 }
