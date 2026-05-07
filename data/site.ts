@@ -6,6 +6,8 @@ export const site = {
   url: "https://aibuildspace.com",
   // TODO: replace with real contact email
   email: "hello@aibuildspace.com",
+  // TODO: swap for real headshot (square JPG, ~512×512). Drop in /public, update path, remove `unoptimized` from <Image>
+  headshot: "/rohit.svg",
   social: {
     // TODO: replace placeholder URLs once handles confirmed
     substack: "#",
