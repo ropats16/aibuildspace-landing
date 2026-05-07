@@ -66,6 +66,7 @@ export const builds: Build[] = [
       "Spin up a personal LLM-readable knowledge base for topics you care about. Inspired by Karpathy.",
     url: "https://github.com/ropats16/llm-wiki-setup",
     label: "Open source",
+    image: "/builds/llm-wiki.png",
   },
 ];
 
