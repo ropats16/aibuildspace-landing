@@ -6,7 +6,7 @@
   --muted: #5B5B62;
   --border: #E7E5DF;
   --card: #FFFFFF;
-  --accent: #2547D0;
+  --accent: #2D59F7;
   --accent-ink: #FFFFFF;
 
   /* Pastel palette for workflow cards */
@@ -23,7 +23,7 @@
   --pastel-lilac: #E6E0F4;
   --pastel-lilac-ink: #463579;
 
-  --glow-mail: rgba(37, 71, 208, 0.10);
+  --glow-mail: rgba(45, 89, 247, 0.10);
   --glow-deck: rgba(124, 58, 237, 0.10);
   --glow-slack: rgba(34, 139, 90, 0.10);
   --glow-video: rgba(214, 110, 40, 0.10);

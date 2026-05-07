@@ -11,8 +11,8 @@ export default function CalEmbed() {
       cal("ui", {
         theme: "light",
         cssVarsPerTheme: {
-          light: { "cal-brand": "#2547D0" },
-          dark: { "cal-brand": "#2547D0" },
+          light: { "cal-brand": "#2D59F7" },
+          dark: { "cal-brand": "#2D59F7" },
         },
         hideEventTypeDetails: false,
         layout: "month_view",

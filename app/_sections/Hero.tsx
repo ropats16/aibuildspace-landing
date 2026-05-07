@@ -18,7 +18,10 @@ export function Hero() {
               priority
               className="mx-auto mb-6 h-40 w-40 rounded-full object-cover ring-4 ring-white shadow-[0_10px_32px_-10px_rgba(11,11,12,0.22),0_2px_6px_rgba(11,11,12,0.06)] sm:mb-7 sm:h-52 sm:w-52 lg:mx-0 lg:h-56 lg:w-56"
             />
-            <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+            <h1
+              className="font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl"
+              style={{ color: "#FF8D01" }}
+            >
               Work smarter with AI.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
