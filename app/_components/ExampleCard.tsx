@@ -20,7 +20,8 @@ export function ExampleCard({ example }: { example: Example }) {
 
   return (
     <article
-      className="group relative flex flex-col gap-5 rounded-2xl bg-card p-5 ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_28px_-12px_rgba(11,11,12,0.18)] sm:p-6"
+      tabIndex={0}
+      className="group relative flex w-full flex-col gap-5 rounded-2xl bg-card p-5 ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-shadow duration-300 hover:shadow-[0_8px_28px_-12px_rgba(11,11,12,0.18)] focus-visible:shadow-[0_8px_28px_-12px_rgba(11,11,12,0.22)] sm:p-6"
       data-category={example.category}
     >
       <header className="flex items-center justify-between">
