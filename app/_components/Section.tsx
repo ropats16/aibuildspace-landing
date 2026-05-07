@@ -23,7 +23,7 @@ export function Section({
       <Container>
         <div className="max-w-3xl">
           {eyebrow && (
-            <p className="mb-4 text-xs uppercase tracking-[0.18em] text-muted">
+            <p className="mb-4 text-xs tracking-[0.18em] text-muted">
               {eyebrow}
             </p>
           )}

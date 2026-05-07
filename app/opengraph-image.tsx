@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "AI Buildspace — work smarter with AI";
+export const alt = "AI Buildspace · Work smarter with AI";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -12,8 +12,8 @@ const BORDER = "#E7E5DF";
 
 const HEADLINE = "Work smarter with AI.";
 const TAGLINE =
-  "Hand-off-able workflows for solopreneurs, owners, and founders.";
-const EYEBROW = "AI BUILDSPACE · BY ROHIT";
+  "Custom AI workflows and live sessions, built around the tools you already use.";
+const EYEBROW = "AI Buildspace · by Rohit";
 const URL_LABEL = "aibuildspace.com";
 const SERVICES_LABEL = "Sessions · Workshops · Custom builds";
 
@@ -80,7 +80,7 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             fontSize: 22,
-            letterSpacing: "0.18em",
+            letterSpacing: "0.08em",
             color: MUTED,
             fontWeight: 500,
           }}

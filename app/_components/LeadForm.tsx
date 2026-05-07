@@ -8,7 +8,7 @@ const inputBase =
   "w-full rounded-xl border border-border bg-card px-3.5 py-2.5 text-[15px] text-ink placeholder:text-muted/60 transition-colors focus:border-ink focus:outline-none focus:ring-2 focus:ring-accent/30";
 
 const labelBase =
-  "mb-1.5 block text-xs font-medium uppercase tracking-[0.14em] text-muted";
+  "mb-1.5 block text-xs font-medium tracking-[0.14em] text-muted";
 
 export function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -54,15 +54,15 @@ export function LeadForm() {
   if (status === "success") {
     return (
       <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-7 sm:p-8">
-        <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent">
+        <p className="text-xs font-medium tracking-[0.14em] text-accent">
           Sent
         </p>
         <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-tight">
-          Thanks — I&rsquo;ll reply within a day.
+          Thanks. I will reply within a day.
         </h3>
         <p className="mt-3 text-[15px] leading-relaxed text-muted">
-          If it&rsquo;s clearly a fit, I&rsquo;ll send a Cal.com link. If not,
-          I&rsquo;ll point you at someone who is.
+          If it is clearly a fit, I will send a Cal.com link. If not, I will
+          point you at someone who is.
         </p>
         <button
           type="button"
@@ -89,12 +89,12 @@ export function LeadForm() {
     >
       <p
         id="lead-form-hint"
-        className="text-xs font-medium uppercase tracking-[0.14em] text-muted"
+        className="text-xs font-medium tracking-[0.14em] text-muted"
       >
         Describe your problem
       </p>
       <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-tight">
-        Tell me your data sources — I&rsquo;ll say if it&rsquo;s a fit.
+        Tell me your data sources, I will say if it is a fit.
       </h3>
 
       <div className="mt-6 space-y-4">
@@ -142,7 +142,7 @@ export function LeadForm() {
             maxLength={4000}
             rows={5}
             disabled={submitting}
-            placeholder="A workflow you keep doing manually, a one-off you'd run weekly, a system you'd hand a new hire…"
+            placeholder="A workflow you keep doing manually, a one-off you want to run weekly, a system you would hand a new hire..."
             aria-describedby="lead-description-hint"
             className={`${inputBase} resize-y`}
           />
@@ -156,7 +156,7 @@ export function LeadForm() {
 
         <div>
           <label htmlFor="lead-data" className={labelBase}>
-            Data sources <span className="lowercase tracking-normal text-muted/70">(optional)</span>
+            Data sources <span className="tracking-normal text-muted/70">(optional)</span>
           </label>
           <input
             id="lead-data"
@@ -164,7 +164,7 @@ export function LeadForm() {
             type="text"
             maxLength={1000}
             disabled={submitting}
-            placeholder="Gmail, Notion, Stripe, GA4…"
+            placeholder="Gmail, Notion, Stripe, GA4..."
             aria-describedby="lead-data-hint"
             className={inputBase}
           />
@@ -193,8 +193,8 @@ export function LeadForm() {
           className="mt-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
         >
           {errorMsg}. Try again or email{" "}
-          <a className="underline" href="mailto:hello@aibuildspace.com">
-            hello@aibuildspace.com
+          <a className="underline" href="mailto:rohit@aibuildspace.com">
+            rohit@aibuildspace.com
           </a>
           .
         </div>
@@ -209,7 +209,7 @@ export function LeadForm() {
           disabled={submitting}
           className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {submitting ? "Sending…" : "Send"}
+          {submitting ? "Sending..." : "Send"}
         </button>
       </div>
     </form>

@@ -53,7 +53,7 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const subject = `New lead — ${data.name}`;
+  const subject = `New lead from ${data.name}`;
   const text = [
     `Name: ${data.name}`,
     `Email: ${data.email}`,

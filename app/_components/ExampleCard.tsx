@@ -43,9 +43,9 @@ export function ExampleCard({ example }: { example: Example }) {
       </header>
 
       <p className="mt-3 text-[14px] font-medium leading-snug text-current/85 sm:text-[15px]">
-        <span className="opacity-60">&ldquo;</span>
+        <span className="opacity-60">&quot;</span>
         {example.prompt}
-        <span className="opacity-60">&rdquo;</span>
+        <span className="opacity-60">&quot;</span>
       </p>
 
       <div className="mt-5 flex flex-1 items-end">

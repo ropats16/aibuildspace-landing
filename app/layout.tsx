@@ -19,24 +19,24 @@ const sans = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://aibuildspace.com"),
   title: {
-    default: "AI Buildspace — work smarter with AI",
+    default: "AI Buildspace · Work smarter with AI",
     template: "%s · AI Buildspace",
   },
   description:
-    "Hand-off-able AI workflows for solopreneurs, owners, and founders. Sessions, workshops, and custom builds with Rohit.",
+    "Custom AI workflows and live sessions, built around the tools you already use. Sessions, workshops, and custom builds with Rohit.",
   openGraph: {
     type: "website",
     url: "https://aibuildspace.com",
     siteName: "AI Buildspace",
-    title: "AI Buildspace — work smarter with AI",
+    title: "AI Buildspace · Work smarter with AI",
     description:
-      "Hand-off-able AI workflows for solopreneurs, owners, and founders.",
+      "Custom AI workflows and live sessions, built around the tools you already use.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Buildspace — work smarter with AI",
+    title: "AI Buildspace · Work smarter with AI",
     description:
-      "Hand-off-able AI workflows for solopreneurs, owners, and founders.",
+      "Custom AI workflows and live sessions, built around the tools you already use.",
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
