@@ -8,9 +8,9 @@ export function Examples() {
       id="examples"
       eyebrow="Examples"
       title="Eight example workflows."
-      lede="Each card pairs a real prompt with a quick artifact preview. The kind of single-purpose systems we build together, for operators and engineers."
+      lede="Each card is a prompt for a workflow you might find yourself performing regularly."
     >
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-10 lg:grid-cols-3">
+      <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-10 lg:grid-cols-4">
         {examples.map((example) => (
           <li key={example.id} className="flex">
             <ExampleCard example={example} />

@@ -1,4 +1,4 @@
-export type ServiceAccent = "mint" | "peach" | "sky" | "lilac";
+export type ServiceAccent = "emerald" | "amber" | "indigo" | "violet";
 
 export type Service = {
   id: "intro" | "deep-dive" | "sprint" | "retainer";
@@ -23,7 +23,7 @@ export const services: Service[] = [
       "Leave with a written next-step plan",
     ],
     cta: "Book an intro",
-    accent: "mint",
+    accent: "emerald",
   },
   {
     id: "deep-dive",
@@ -37,7 +37,7 @@ export const services: Service[] = [
       "Recording and docs so you can rerun it",
     ],
     cta: "Book a deep dive",
-    accent: "peach",
+    accent: "amber",
   },
   {
     id: "sprint",
@@ -51,7 +51,7 @@ export const services: Service[] = [
       "Documented so a non-engineer can tweak them",
     ],
     cta: "Scope a sprint",
-    accent: "sky",
+    accent: "indigo",
   },
   {
     id: "retainer",
@@ -64,7 +64,7 @@ export const services: Service[] = [
       "Priority on new sprint slots",
     ],
     cta: "Add a retainer",
-    accent: "lilac",
+    accent: "violet",
   },
 ];
 

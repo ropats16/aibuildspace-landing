@@ -1,7 +1,7 @@
 export function SlackMessage() {
   return (
-    <div className="rounded-xl bg-white px-4 pt-3 pb-4 shadow-sm ring-1 ring-black/5">
-      <div className="flex items-center gap-1.5 text-[10px] font-medium text-emerald-700/80">
+    <div className="flex h-full flex-col rounded-xl bg-white px-4 pt-3 pb-3 shadow-sm ring-1 ring-black/5">
+      <div className="flex items-center gap-1.5 text-[10px] font-medium text-emerald-700/90">
         <svg width="11" height="11" viewBox="0 0 24 24" aria-hidden>
           <path
             fill="currentColor"
@@ -13,7 +13,7 @@ export function SlackMessage() {
         <span className="text-muted">Mon 9:00</span>
       </div>
 
-      <div className="mt-3 flex gap-3">
+      <div className="mt-2 flex flex-1 gap-3">
         <div
           className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-teal-600 text-[11px] font-semibold text-white"
           aria-hidden
@@ -32,8 +32,7 @@ export function SlackMessage() {
             <li>• Sessions <span className="font-medium tabular-nums text-emerald-700">+12.4%</span> WoW</li>
             <li>• Signups <span className="font-medium tabular-nums text-emerald-700">+184</span> · CAC $42</li>
             <li>• MRR <span className="font-medium tabular-nums">$48.2k</span> (+$3.1k)</li>
-            <li>• Refunds 2 · churn 1.1%</li>
-            <li>• Top source: organic / blog</li>
+            <li>• Churn 1.1% · refunds 2</li>
           </ul>
         </div>
       </div>

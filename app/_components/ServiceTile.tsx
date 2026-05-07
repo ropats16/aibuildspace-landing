@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { pricingNote, type Service, type ServiceAccent } from "@/data/services";
 
-const accentClass: Record<ServiceAccent, string> = {
-  mint: "pastel-mint",
-  peach: "pastel-peach",
-  sky: "pastel-sky",
-  lilac: "pastel-lilac",
+const accentBox: Record<ServiceAccent, string> = {
+  emerald: "bg-emerald-100 text-emerald-700",
+  amber: "bg-amber-100 text-amber-700",
+  indigo: "bg-indigo-100 text-indigo-700",
+  violet: "bg-violet-100 text-violet-700",
 };
 
-const accentLineColor: Record<ServiceAccent, string> = {
-  mint: "var(--pastel-mint-ink)",
-  peach: "var(--pastel-peach-ink)",
-  sky: "var(--pastel-sky-ink)",
-  lilac: "var(--pastel-lilac-ink)",
+const accentLine: Record<ServiceAccent, string> = {
+  emerald: "bg-emerald-500",
+  amber: "bg-amber-500",
+  indigo: "bg-indigo-500",
+  violet: "bg-violet-500",
 };
 
 const svgProps = {
@@ -71,7 +71,7 @@ export function ServiceTile({ service }: ServiceTileProps) {
     <article className="group relative flex h-full flex-col rounded-2xl bg-card p-6 ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-18px_rgba(11,11,12,0.22),0_2px_8px_rgba(11,11,12,0.04)] hover:ring-black/[0.10] sm:p-7">
       <div className="flex items-center justify-between gap-3">
         <span
-          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${accentClass[accent]} transition-transform duration-300 group-hover:-rotate-3`}
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${accentBox[accent]} transition-transform duration-300 group-hover:-rotate-3`}
         >
           <ServiceIcon id={id} />
         </span>
@@ -86,8 +86,7 @@ export function ServiceTile({ service }: ServiceTileProps) {
 
       <span
         aria-hidden
-        className="mt-3 block h-[2px] w-8 rounded-full transition-[width] duration-300 group-hover:w-14"
-        style={{ backgroundColor: accentLineColor[accent] }}
+        className={`mt-3 block h-[2px] w-8 rounded-full transition-[width] duration-300 group-hover:w-14 ${accentLine[accent]}`}
       />
 
       <p className="mt-4 text-[15px] leading-relaxed text-ink/85">

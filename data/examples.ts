@@ -1,12 +1,14 @@
 export type ExampleCategory = "mail" | "deck" | "slack" | "video" | "code";
 
-export type ExampleTone =
-  | "mint"
-  | "peach"
-  | "lemon"
+export type ExampleAccent =
+  | "amber"
+  | "indigo"
+  | "violet"
+  | "orange"
   | "rose"
-  | "sky"
-  | "lilac";
+  | "emerald"
+  | "teal"
+  | "red";
 
 export type ArtifactType =
   | "email-digest"
@@ -22,7 +24,7 @@ export type Example = {
   id: string;
   prompt: string;
   category: ExampleCategory;
-  tone: ExampleTone;
+  accent: ExampleAccent;
   artifact: ArtifactType;
   outcomeLabel: string;
 };
@@ -33,7 +35,7 @@ export const examples: Example[] = [
     prompt:
       "Send me a 7am summary of yesterday's revenue, today's calendar, and any urgent emails I missed.",
     category: "mail",
-    tone: "peach",
+    accent: "amber",
     artifact: "email-digest",
     outcomeLabel: "Morning brief",
   },
@@ -42,7 +44,7 @@ export const examples: Example[] = [
     prompt:
       "Sort my inbox into reply-now, reply-later, and archive. Draft replies for the urgent ones in my voice.",
     category: "mail",
-    tone: "rose",
+    accent: "indigo",
     artifact: "inbox-mock",
     outcomeLabel: "Inbox triage",
   },
@@ -51,7 +53,7 @@ export const examples: Example[] = [
     prompt:
       "Turn last quarter's metrics into a 10-slide investor update on our brand template.",
     category: "deck",
-    tone: "lemon",
+    accent: "violet",
     artifact: "slide-thumbs",
     outcomeLabel: "Investor update",
   },
@@ -60,16 +62,16 @@ export const examples: Example[] = [
     prompt:
       "Read every support ticket from last month and pull the top 5 complaints with example quotes.",
     category: "deck",
-    tone: "mint",
+    accent: "orange",
     artifact: "report-mock",
     outcomeLabel: "Top complaints",
   },
   {
     id: "vertical-reel",
     prompt:
-      "Make a 30-second vertical reel of our product update using my HeyGen avatar and ElevenLabs voice.",
+      "Make a 30-second vertical reel of our product update using my avatar and voice.",
     category: "video",
-    tone: "lilac",
+    accent: "rose",
     artifact: "video-frame",
     outcomeLabel: "Vertical reel",
   },
@@ -78,7 +80,7 @@ export const examples: Example[] = [
     prompt:
       "Every Monday, post a 5-bullet summary of GA4 and Stripe into #leadership on Slack.",
     category: "slack",
-    tone: "sky",
+    accent: "emerald",
     artifact: "slack-message",
     outcomeLabel: "Monday metrics",
   },
@@ -87,7 +89,7 @@ export const examples: Example[] = [
     prompt:
       "Read the diff on this branch, write a PR description with a summary, test plan, and screenshots if relevant.",
     category: "code",
-    tone: "peach",
+    accent: "teal",
     artifact: "pr-description",
     outcomeLabel: "PR description",
   },
@@ -96,7 +98,7 @@ export const examples: Example[] = [
     prompt:
       "Take this Slack support thread and turn it into a bug report with reproduction steps, expected vs actual, severity.",
     category: "code",
-    tone: "mint",
+    accent: "red",
     artifact: "bug-report",
     outcomeLabel: "Bug report",
   },
