@@ -192,7 +192,7 @@ function ToolNode({
           }}
           onPointerEnter={() => onActivate(tool.id)}
           onFocus={() => onActivate(tool.id)}
-          aria-label={`${tool.name} — show example prompt`}
+          aria-label={`${tool.name}, show example prompt`}
           aria-pressed={isActive}
           data-active={isActive || undefined}
           className="orbit-node relative flex h-11 w-11 items-center justify-center rounded-full sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
@@ -271,9 +271,9 @@ function ActivationOverlay({ tool }: { tool: Tool }) {
               transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
               className="mt-3 text-[14px] font-medium leading-snug text-ink sm:text-[15px]"
             >
-              <span className="text-muted">&ldquo;</span>
+              <span className="text-muted">&quot;</span>
               {tool.prompt}
-              <span className="text-muted">&rdquo;</span>
+              <span className="text-muted">&quot;</span>
             </motion.p>
           </article>
         </motion.div>

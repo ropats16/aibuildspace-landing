@@ -22,7 +22,7 @@ export function About() {
     <Section
       id="about"
       eyebrow="About"
-      title="Rohit + AI Buildspace."
+      title="Rohit and AI Buildspace."
       lede="The story behind the studio, and how to find me elsewhere."
     >
       <div className="mt-8 grid items-start gap-10 sm:grid-cols-[200px_1fr] sm:gap-12 lg:mt-10 lg:grid-cols-[260px_1fr] lg:gap-16">

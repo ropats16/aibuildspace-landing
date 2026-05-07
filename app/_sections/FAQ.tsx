@@ -7,7 +7,7 @@ export function FAQ() {
       id="faq"
       eyebrow="FAQ"
       title="The straight answers."
-      lede="Pricing, timelines, what I don't build, tools, handoff, NDAs."
+      lede="Pricing, timelines, what I do not build, tools, handoff, NDAs."
     >
       <ul className="mt-8 divide-y divide-border/60 border-y border-border/60 lg:mt-10">
         {faq.map((item) => (

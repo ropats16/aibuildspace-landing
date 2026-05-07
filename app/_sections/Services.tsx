@@ -9,7 +9,7 @@ export function Services() {
       id="services"
       eyebrow="Services"
       title="Pick the entry point that fits."
-      lede="Start small, go deeper when it earns it. Pricing is quote-based and scoped on the call — no hidden surprises."
+      lede="Start small, go deeper when it earns it. Pricing is quote-based and scoped on the call. You will know the full number before we start."
     >
       <ul className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-10 lg:grid-cols-4">
         {services.map((service) => (

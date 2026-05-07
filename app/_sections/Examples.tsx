@@ -7,8 +7,8 @@ export function Examples() {
     <Section
       id="examples"
       eyebrow="Examples"
-      title="Six example workflows."
-      lede="Each card pairs a composed prompt with a mini artifact preview — the kind of single-purpose, hand-off-able systems we'd build together."
+      title="Eight example workflows."
+      lede="Each card pairs a real prompt with a quick artifact preview. The kind of single-purpose systems we build together, for operators and engineers."
     >
       <ul className="mt-8 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-10 lg:grid-cols-3">
         {examples.map((example) => (

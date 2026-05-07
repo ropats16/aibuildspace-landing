@@ -6,8 +6,8 @@ import { Footer } from "@/app/_sections/Footer";
 import { Hero } from "@/app/_sections/Hero";
 import { HowIWork } from "@/app/_sections/HowIWork";
 import { Nav } from "@/app/_sections/Nav";
+import { RecentBuilds } from "@/app/_sections/RecentBuilds";
 import { Services } from "@/app/_sections/Services";
-import { Watch } from "@/app/_sections/Watch";
 
 export default function Home() {
   return (
@@ -15,10 +15,10 @@ export default function Home() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <HowIWork />
         <Services />
         <Examples />
-        <Watch />
+        <RecentBuilds />
+        <HowIWork />
         <About />
         <FAQ />
         <Booking />
