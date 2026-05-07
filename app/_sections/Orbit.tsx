@@ -77,7 +77,7 @@ export function Orbit() {
         }
       }}
       data-paused={paused || undefined}
-      className="orbit-root relative mx-auto aspect-square w-full max-w-[760px] outline-none"
+      className="orbit-root relative mx-auto aspect-square w-full max-w-[400px] outline-none sm:max-w-[480px] md:max-w-[600px] lg:max-w-[600px] xl:max-w-[680px]"
     >
       {([0, 1] as OrbitRing[]).map((ringIdx) => {
         const r = RING_RADIUS[ringIdx];
@@ -195,14 +195,14 @@ function ToolNode({
           aria-label={`${tool.name} — show example prompt`}
           aria-pressed={isActive}
           data-active={isActive || undefined}
-          className="orbit-node relative flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+          className="orbit-node relative flex h-11 w-11 items-center justify-center rounded-full sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
         >
           <Image
             src={tool.logo}
             alt=""
             width={36}
             height={36}
-            className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9"
+            className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 xl:h-9 xl:w-9"
             unoptimized
           />
         </button>
