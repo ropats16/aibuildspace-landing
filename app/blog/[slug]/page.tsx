@@ -50,7 +50,9 @@ export async function generateMetadata({
   const base: Metadata = {
     title,
     description,
-    keywords: post.keywords as string[],
+    // Tags fold into keywords here (structured metadata) rather than rendering
+    // as visible pills; this is the SEO/AEO channel for topical labels.
+    keywords: [...new Set([...post.keywords, ...post.tags])],
     alternates: {
       canonical: `/blog/${slug}`,
     },
@@ -139,7 +141,7 @@ export default async function Page({
       "@type": "WebPage",
       "@id": postUrl,
     },
-    keywords: (post.keywords as string[]).join(", "),
+    keywords: [...new Set([...post.keywords, ...post.tags])].join(", "),
   };
 
   return (

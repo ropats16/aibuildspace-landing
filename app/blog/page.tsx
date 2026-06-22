@@ -8,7 +8,7 @@ import { PostCard } from "./_components/PostCard";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Notes, how-tos, and workflow breakdowns on building with AI. Practical content from real projects.",
+    "Guides, tools, and ideas from building with AI. Practical writing drawn from real projects.",
   alternates: {
     canonical: "/blog",
     types: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog | Rohit",
     description:
-      "Notes, how-tos, and workflow breakdowns on building with AI. Practical content from real projects.",
+      "Guides, tools, and ideas from building with AI. Practical writing drawn from real projects.",
     url: "/blog",
     type: "website",
   },
@@ -38,11 +38,12 @@ export default async function BlogPage() {
             Blog
           </p>
           <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-            Notes and how-tos
+            Writing on building with AI
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted">
-            Workflow breakdowns, prompt patterns, and lessons from building
-            real AI projects. Everything here is tested, not theoretical.
+            Guides, tools, and ideas from my work with AI. I write to make the
+            useful parts clear, and to think out loud about where this is all
+            heading.
           </p>
         </div>
 
@@ -52,9 +53,9 @@ export default async function BlogPage() {
             No posts yet. Check back soon.
           </PlaceholderNote>
         ) : (
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:mt-12">
+          <ul className="mt-10 flex flex-col gap-6 lg:mt-12">
             {posts.map((post) => (
-              <li key={post.slug} className="h-full">
+              <li key={post.slug}>
                 <PostCard post={post} />
               </li>
             ))}
