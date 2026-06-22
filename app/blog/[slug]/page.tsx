@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/app/_components/Container";
 import {
@@ -175,10 +176,31 @@ export default async function Page({
                 </div>
               )}
 
-              {/* Label */}
-              <p className="mb-4 text-xs tracking-[0.18em] uppercase text-muted">
-                Blog
-              </p>
+              {/* Breadcrumb back to the list */}
+              <nav aria-label="Breadcrumb" className="mb-4">
+                <Link
+                  href="/blog"
+                  className="group inline-flex items-center gap-1.5 text-xs tracking-[0.18em] uppercase text-muted transition-colors hover:text-ink"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                    className="transition-transform group-hover:-translate-x-0.5"
+                  >
+                    <path
+                      d="M10 12L6 8l4-4"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Blog
+                </Link>
+              </nav>
 
               {/* Title */}
               <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl text-ink">
