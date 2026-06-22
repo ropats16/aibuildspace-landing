@@ -158,6 +158,21 @@ export default async function Page({
           {/* Reading column — centered, prose width */}
           <div className="mx-auto max-w-3xl">
             <article>
+              {/* Banner image (above the title) */}
+              {post.bannerImage && (
+                <div className="mb-8 overflow-hidden rounded-2xl ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)]">
+                  <Image
+                    src={post.bannerImage}
+                    alt={post.bannerAlt}
+                    width={1200}
+                    height={630}
+                    className="w-full object-cover"
+                    priority
+                    sizes="(min-width: 1024px) 768px, 100vw"
+                  />
+                </div>
+              )}
+
               {/* Label */}
               <p className="mb-4 text-xs tracking-[0.18em] uppercase text-muted">
                 Blog
@@ -173,20 +188,10 @@ export default async function Page({
                 <ReadingMeta date={post.publishedDate} minutes={minutes} />
               </div>
 
-              {/* Banner image */}
-              {post.bannerImage && (
-                <div className="mt-8 overflow-hidden rounded-2xl ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)]">
-                  <Image
-                    src={post.bannerImage}
-                    alt={post.bannerAlt}
-                    width={1200}
-                    height={630}
-                    className="w-full object-cover"
-                    priority
-                    sizes="(min-width: 1024px) 768px, 100vw"
-                  />
-                </div>
-              )}
+              {/* Share bar (top) */}
+              <div className="mt-6">
+                <ShareBar url={postUrl} title={post.title} />
+              </div>
 
               {/* Optional top video (shown after banner) */}
               {post.videoUrl && (

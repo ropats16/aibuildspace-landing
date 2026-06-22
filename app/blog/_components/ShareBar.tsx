@@ -1,16 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { capture } from "@/app/_lib/analytics";
-import {
-  InstagramIcon,
-  LinkedinIcon,
-  SubstackIcon,
-  XIcon,
-  YoutubeIcon,
-} from "@/app/_components/SocialIcons";
-import { site } from "@/data/site";
+import { LinkedinIcon, XIcon } from "@/app/_components/SocialIcons";
 
 // Simple link/copy icon (not a brand logo, hand-drawn is allowed per constraints).
 function LinkIcon({ className }: { className?: string }) {
@@ -47,14 +39,6 @@ function CheckIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
-const followSocials = [
-  { href: site.social.instagram, label: "Instagram", network: "instagram", Icon: InstagramIcon },
-  { href: site.social.x, label: "X", network: "x", Icon: XIcon },
-  { href: site.social.linkedin, label: "LinkedIn", network: "linkedin", Icon: LinkedinIcon },
-  { href: site.social.youtube, label: "YouTube", network: "youtube", Icon: YoutubeIcon },
-  { href: site.social.substack, label: "Substack", network: "substack", Icon: SubstackIcon },
-] as const;
 
 const pillClass =
   "inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-ink hover:text-ink";
@@ -109,69 +93,44 @@ export function ShareBar({ url, title }: ShareBarProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      {/* Share controls */}
-      <div className="flex flex-col gap-3">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted">
-          Share
-        </p>
-        <div className="flex items-center gap-3">
-          {/* Copy link */}
-          <button
-            type="button"
-            onClick={handleCopy}
-            aria-label={copied ? "Link copied" : "Copy link"}
-            className={pillClass}
-          >
-            {copied ? (
-              <CheckIcon className="h-4 w-4 text-accent" />
-            ) : (
-              <LinkIcon className="h-4 w-4" />
-            )}
-          </button>
+    <div className="flex flex-col gap-3">
+      <p className="text-xs font-medium uppercase tracking-wider text-muted">
+        Share
+      </p>
+      <div className="flex items-center gap-3">
+        {/* Copy link */}
+        <button
+          type="button"
+          onClick={handleCopy}
+          aria-label={copied ? "Link copied" : "Copy link"}
+          className={pillClass}
+        >
+          {copied ? (
+            <CheckIcon className="h-4 w-4 text-accent" />
+          ) : (
+            <LinkIcon className="h-4 w-4" />
+          )}
+        </button>
 
-          {/* Share to X */}
-          <button
-            type="button"
-            onClick={handleShareX}
-            aria-label="Share on X"
-            className={pillClass}
-          >
-            <XIcon className="h-4 w-4" />
-          </button>
+        {/* Share to X */}
+        <button
+          type="button"
+          onClick={handleShareX}
+          aria-label="Share on X"
+          className={pillClass}
+        >
+          <XIcon className="h-4 w-4" />
+        </button>
 
-          {/* Share to LinkedIn */}
-          <button
-            type="button"
-            onClick={handleShareLinkedIn}
-            aria-label="Share on LinkedIn"
-            className={pillClass}
-          >
-            <LinkedinIcon className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Follow row */}
-      <div className="flex flex-col gap-3">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted">
-          Follow along
-        </p>
-        <div className="flex items-center gap-3">
-          {followSocials.map(({ href, label, network, Icon }) => (
-            <Link
-              key={network}
-              href={href}
-              aria-label={label}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => capture("social_click", { network })}
-              className={pillClass}
-            >
-              <Icon className="h-4 w-4" />
-            </Link>
-          ))}
-        </div>
+        {/* Share to LinkedIn */}
+        <button
+          type="button"
+          onClick={handleShareLinkedIn}
+          aria-label="Share on LinkedIn"
+          className={pillClass}
+        >
+          <LinkedinIcon className="h-4 w-4" />
+        </button>
       </div>
     </div>
   );

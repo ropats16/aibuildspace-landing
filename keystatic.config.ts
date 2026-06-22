@@ -74,13 +74,15 @@ export default config({
           description: 'SEO meta description (~150-160 chars).',
           multiline: true,
         }),
-        keywords: fields.array(fields.text({ label: 'Keyword' }), {
+        keywords: fields.text({
           label: 'Keywords',
-          itemLabel: (p) => p.value,
+          description:
+            'Comma-separated. e.g. ai workflows, claude code, prompt engineering',
+          multiline: true,
         }),
-        tags: fields.array(fields.text({ label: 'Tag' }), {
+        tags: fields.text({
           label: 'Tags',
-          itemLabel: (p) => p.value,
+          description: 'Comma-separated. Shown as pills on the post card.',
         }),
         bannerImage: fields.image({
           label: 'Banner image',

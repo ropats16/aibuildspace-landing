@@ -52,6 +52,20 @@ export function readingTimeMinutes(text: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
+/**
+ * Split a comma/newline-separated string (keywords, tags) into a trimmed,
+ * de-duplicated list. Empty/blank entries are dropped.
+ */
+export function splitList(value: string | null | undefined): string[] {
+  if (!value) return [];
+  const seen = new Set<string>();
+  for (const part of value.split(/[\n,]+/)) {
+    const trimmed = part.trim();
+    if (trimmed) seen.add(trimmed);
+  }
+  return [...seen];
+}
+
 // ---------------------------------------------------------------------------
 // Reader API
 // ---------------------------------------------------------------------------
@@ -71,8 +85,8 @@ function entryToPost(
     draft: entry.draft,
     summary: entry.summary,
     metaDescription: entry.metaDescription ?? null,
-    keywords: entry.keywords,
-    tags: entry.tags,
+    keywords: splitList(entry.keywords),
+    tags: splitList(entry.tags),
     bannerImage: entry.bannerImage ?? null,
     bannerAlt: entry.bannerAlt,
     videoUrl: entry.videoUrl ?? null,
