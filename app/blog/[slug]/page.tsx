@@ -12,6 +12,7 @@ import { ArticleRenderer } from "@/app/blog/_components/ArticleRenderer";
 import { ReadingMeta } from "@/app/blog/_components/ReadingMeta";
 import { VideoEmbed } from "@/app/blog/_components/VideoEmbed";
 import { ShareBar } from "@/app/blog/_components/ShareBar";
+import { PostViewTracker } from "@/app/blog/_components/PostViewTracker";
 import { site } from "@/data/site";
 
 // ---------------------------------------------------------------------------
@@ -148,6 +149,9 @@ export default async function Page({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {/* Analytics: fires blog_post_view + scroll_depth milestones client-side */}
+      <PostViewTracker slug={slug} />
 
       <section className="py-14 sm:py-16 lg:py-20">
         <Container>
