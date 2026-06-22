@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import posthog from "posthog-js";
 
 const CONSENT_KEY = "ab_analytics_consent";
@@ -13,41 +13,30 @@ function safeOptOut() {
   }
 }
 
-/**
- * Read the stored consent value, enforcing any persisted opt-out immediately.
- * Returns null when localStorage is unavailable or the key is unset.
- */
-function initConsent(): "granted" | "denied" | null {
-  if (typeof window === "undefined") return null; // SSR: no localStorage
-  try {
-    const stored = localStorage.getItem(CONSENT_KEY) as
-      | "granted"
-      | "denied"
-      | null;
-    if (stored === "denied") {
-      safeOptOut(); // enforce persisted opt-out on reload
-    }
-    return stored;
-  } catch {
-    return null; // localStorage blocked
-  }
-}
-
 export function ConsentBanner() {
   /**
-   * Hydration safety: the lazy initializer runs only on the client.
-   * On the server (and during SSR hydration) `typeof window === "undefined"`
-   * so `initConsent()` returns null and `visible` starts false.
-   * After hydration, React re-runs the client initializer, so the first
-   * client render also starts with the correct value without a mismatch.
+   * Hydration safety: both the server render and the client's FIRST render
+   * start with visible=false (banner hidden), so their outputs are identical
+   * and no hydration mismatch can occur. After mount, the effect reads
+   * localStorage (client-only) and shows the banner only when consent is unset.
    *
    * "visible" means: consent is unset (null) — show the banner.
    * If consent is "granted" or "denied", suppress it.
    */
-  const [visible, setVisible] = useState<boolean>(() => {
-    const stored = initConsent();
-    return stored === null; // show only when unset
-  });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem(CONSENT_KEY);
+    } catch {
+      // localStorage blocked; treat as first visit
+    }
+    if (stored === "denied") safeOptOut(); // enforce persisted opt-out
+    // client-only localStorage read after mount; required to avoid SSR hydration mismatch
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (stored === null) setVisible(true); // first visit -> show banner after mount
+  }, []);
 
   function handleAccept() {
     try {
