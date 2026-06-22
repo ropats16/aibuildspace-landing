@@ -32,6 +32,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     if (!key) return; // no-op: no key, no network
 
     const init = () => {
+      if (posthog.__loaded) return; // already initialized; avoid double init/pageview
       posthog.init(key, {
         api_host:
           process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com",
@@ -49,6 +50,13 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       } catch {
         // localStorage may be blocked; ignore
       }
+
+      // Fire the first-load pageview here. PageviewTracker's effect already ran
+      // before posthog finished its deferred init, so that initial capture was
+      // dropped. If consent was denied above, opt_out makes this a safe no-op.
+      posthog.capture("pageview", {
+        path: window.location.pathname + window.location.search,
+      });
     };
 
     // Defer init so it does not block LCP/INP.
