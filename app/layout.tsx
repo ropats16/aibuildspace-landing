@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PostHogProvider } from "@/app/_components/PostHogProvider";
+import { ConsentBanner } from "@/app/_components/ConsentBanner";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -62,6 +63,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg text-ink">
         <PostHogProvider>{children}</PostHogProvider>
         <SpeedInsights />
+        <ConsentBanner />
       </body>
     </html>
   );
