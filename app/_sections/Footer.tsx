@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/app/_components/Container";
 import {
   InstagramIcon,
+  LinkedinIcon,
   SubstackIcon,
   XIcon,
   YoutubeIcon,
@@ -12,6 +13,7 @@ import { site } from "@/data/site";
 const socials = [
   { href: site.social.substack, label: "Substack", Icon: SubstackIcon },
   { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
+  { href: site.social.linkedin, label: "LinkedIn", Icon: LinkedinIcon },
   { href: site.social.youtube, label: "YouTube", Icon: YoutubeIcon },
   { href: site.social.x, label: "X", Icon: XIcon },
 ] as const;

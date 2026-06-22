@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@/app/_components/Container";
 import { Wordmark } from "@/app/_components/Wordmark";
 import { navLinks } from "@/data/site";
+import { capture } from "@/app/_lib/analytics";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -38,8 +39,9 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="#book"
+            href="/#book"
             className="hidden md:inline-flex h-9 items-center rounded-full bg-accent px-4 text-sm font-medium text-accent-ink transition-opacity hover:opacity-90"
+            onClick={() => capture("cta_book_call_click", { location: "nav_desktop" })}
           >
             Book a call
           </Link>
@@ -90,9 +92,9 @@ export function Nav() {
               </Link>
             ))}
             <Link
-              href="#book"
+              href="/#book"
               className="mt-2 inline-flex h-10 items-center justify-center rounded-full bg-accent px-4 text-sm font-medium text-accent-ink"
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false); capture("cta_book_call_click", { location: "nav_mobile" }); }}
             >
               Book a call
             </Link>

@@ -9,14 +9,16 @@ export const site = {
   social: {
     substack: "https://rohit7986.substack.com",
     instagram: "https://www.instagram.com/aibuildspace/",
+    linkedin: "https://www.linkedin.com/in/rohit-pathare-88205b162/",
     youtube: "https://www.youtube.com/@aibuildspace/videos",
     x: "https://x.com/ropats16",
   },
 } as const;
 
 export const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#examples", label: "Sample prompts" },
-  { href: "#builds", label: "In the wild" },
-  { href: "#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#examples", label: "Sample prompts" },
+  { href: "/#builds", label: "In the wild" },
+  { href: "/#about", label: "About" },
+  { href: "/blog", label: "Blog" },
 ] as const;

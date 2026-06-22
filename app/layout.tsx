@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { PostHogProvider } from "@/app/_components/PostHogProvider";
+import { ConsentBanner } from "@/app/_components/ConsentBanner";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -40,6 +43,7 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
+  verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION },
 };
 
 export const viewport: Viewport = {
@@ -57,7 +61,9 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-ink">
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
+        <SpeedInsights />
+        <ConsentBanner />
       </body>
     </html>
   );
