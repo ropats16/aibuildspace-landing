@@ -161,23 +161,8 @@ export default async function Page({
           {/* Reading column — centered, prose width */}
           <div className="mx-auto max-w-3xl">
             <article>
-              {/* Banner image (above the title) */}
-              {post.bannerImage && (
-                <div className="mb-8 overflow-hidden rounded-2xl ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)]">
-                  <Image
-                    src={post.bannerImage}
-                    alt={post.bannerAlt}
-                    width={1200}
-                    height={630}
-                    className="w-full object-cover"
-                    priority
-                    sizes="(min-width: 1024px) 768px, 100vw"
-                  />
-                </div>
-              )}
-
               {/* Breadcrumb back to the list */}
-              <nav aria-label="Breadcrumb" className="mb-4">
+              <nav aria-label="Breadcrumb" className="mb-6">
                 <Link
                   href="/blog"
                   className="group inline-flex items-center gap-1.5 text-xs tracking-[0.18em] uppercase text-muted transition-colors hover:text-ink"
@@ -201,6 +186,21 @@ export default async function Page({
                   Blog
                 </Link>
               </nav>
+
+              {/* Banner image (above the title) */}
+              {post.bannerImage && (
+                <div className="mb-8 overflow-hidden rounded-2xl ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)]">
+                  <Image
+                    src={post.bannerImage}
+                    alt={post.bannerAlt}
+                    width={1200}
+                    height={630}
+                    className="w-full object-cover"
+                    priority
+                    sizes="(min-width: 1024px) 768px, 100vw"
+                  />
+                </div>
+              )}
 
               {/* Title */}
               <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl text-ink">
