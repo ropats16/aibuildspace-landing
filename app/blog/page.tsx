@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/app/_components/Container";
 import { PlaceholderNote } from "@/app/_components/Section";
 import { getAllPosts } from "@/app/_lib/posts";
+import { site } from "@/data/site";
 import { PostCard } from "./_components/PostCard";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "/blog",
     types: {
       "application/rss+xml": [
-        { url: "https://aibuildspace.com/rss.xml", title: "AI Buildspace RSS Feed" },
+        { url: `${site.url}/rss.xml`, title: "AI Buildspace RSS Feed" },
       ],
     },
   },

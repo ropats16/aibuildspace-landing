@@ -1,6 +1,7 @@
 import { DocumentRenderer } from "@keystatic/core/renderer";
 import type { DocumentRendererProps } from "@keystatic/core/renderer";
 import type { DocumentNode } from "@keystatic/core";
+import type { ReactNode, ReactElement } from "react";
 import { VideoEmbed } from "./VideoEmbed";
 
 // ---------------------------------------------------------------------------
@@ -17,14 +18,14 @@ function slugify(text: string): string {
 // ---------------------------------------------------------------------------
 // Extract plain text from DocumentRenderer children (ReactNode)
 // ---------------------------------------------------------------------------
-type WithChildren = { children?: React.ReactNode };
+type WithChildren = { children?: ReactNode };
 
-function reactNodeToString(node: React.ReactNode): string {
+function reactNodeToString(node: ReactNode): string {
   if (typeof node === "string") return node;
   if (typeof node === "number") return String(node);
   if (Array.isArray(node)) return node.map(reactNodeToString).join("");
   if (node !== null && typeof node === "object" && "props" in node) {
-    const props = (node as React.ReactElement<WithChildren>).props;
+    const props = (node as ReactElement<WithChildren>).props;
     return reactNodeToString(props?.children);
   }
   return "";
@@ -88,7 +89,10 @@ const renderers: DocumentRendererProps["renderers"] = {
     heading: ({ level, children }) => {
       const text = reactNodeToString(children);
       const id = slugify(text);
-      const Tag = `h${level}` as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+      // Clamp to h2-h6: the post page owns the single h1 (the title), so author
+      // headings must never emit a second h1 (a11y + SEO).
+      const safeLevel = Math.min(6, Math.max(2, level));
+      const Tag = `h${safeLevel}` as "h2" | "h3" | "h4" | "h5" | "h6";
       return <Tag id={id}>{children}</Tag>;
     },
     image: ({ src, alt, title }) => {
