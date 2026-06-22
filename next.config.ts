@@ -20,19 +20,21 @@ const nextConfig: NextConfig = {
   },
 
   // PostHog reverse proxy.
-  // The SDK is configured (PostHogProvider) to send to first-party `/ingest`
-  // instead of `i.posthog.com`, so host-based content blockers (Brave Shields,
-  // uBlock) can't drop the events. We proxy those paths to PostHog US cloud.
-  // Static assets come from the separate `-assets` host. On EU cloud, swap the
-  // two destinations for `eu(-assets).i.posthog.com`.
+  // The SDK (PostHogProvider) sends to the first-party `/abx` path instead of
+  // `i.posthog.com`, so content blockers can't drop events by matching the
+  // host. The path is deliberately NOT `/ingest`: that is PostHog's documented
+  // default and is now on filter lists (EasyPrivacy / Brave), so `/ingest` gets
+  // blocked just like the host did. `/abx` is opaque to those lists. We proxy
+  // to PostHog US cloud; static assets come from the `-assets` host. On EU
+  // cloud, swap the destinations for `eu(-assets).i.posthog.com`.
   async rewrites() {
     return [
       {
-        source: "/ingest/static/:path*",
+        source: "/abx/static/:path*",
         destination: "https://us-assets.i.posthog.com/static/:path*",
       },
       {
-        source: "/ingest/:path*",
+        source: "/abx/:path*",
         destination: "https://us.i.posthog.com/:path*",
       },
     ];

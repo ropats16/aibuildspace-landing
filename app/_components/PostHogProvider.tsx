@@ -35,8 +35,8 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       if (posthog.__loaded) return; // already initialized; avoid double init/pageview
       posthog.init(key, {
         // First-party path; proxied to PostHog in next.config.ts so content
-        // blockers can't drop events by matching the i.posthog.com host.
-        api_host: "/ingest",
+        // blockers can't drop events by host or by the known `/ingest` path.
+        api_host: "/abx",
         // Where the PostHog app itself lives (toolbar, links). Not proxied.
         ui_host: "https://us.posthog.com",
         capture_pageview: false, // we fire manually via PageviewTracker
