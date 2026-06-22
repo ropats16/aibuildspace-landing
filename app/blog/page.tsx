@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     "Notes, how-tos, and workflow breakdowns on building with AI. Practical content from real projects.",
   alternates: {
     canonical: "/blog",
+    types: {
+      "application/rss+xml": [
+        { url: "https://aibuildspace.com/rss.xml", title: "AI Buildspace RSS Feed" },
+      ],
+    },
   },
   openGraph: {
     title: "Blog | Rohit",
