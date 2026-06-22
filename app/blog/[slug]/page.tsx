@@ -44,7 +44,7 @@ export async function generateMetadata({
 
   const description = post.metaDescription ?? post.summary;
   const title = post.title;
-  const bannerImage = post.bannerImage ?? "/og-default.png";
+  const bannerImage = post.bannerImage ?? "/thumbnail_alt.png";
 
   const base: Metadata = {
     title,
@@ -111,7 +111,7 @@ export default async function Page({
   const postUrl = `${site.url}/blog/${slug}`;
   const bannerAbsolute = post.bannerImage
     ? `${site.url}${post.bannerImage}`
-    : `${site.url}/og-default.png`;
+    : `${site.url}/thumbnail_alt.png`;
 
   // BlogPosting JSON-LD
   const jsonLd = {
@@ -131,7 +131,7 @@ export default async function Page({
       name: site.name,
       logo: {
         "@type": "ImageObject",
-        url: `${site.url}/logo.png`,
+        url: `${site.url}/thumbnail_alt.png`,
       },
     },
     mainEntityOfPage: {
