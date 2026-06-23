@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Some browsers/OSes resolve `localhost` to `127.0.0.1` and rewrite the URL,
+  // making dev-resource requests cross-origin. Allow that origin so HMR and
+  // `/_next/*` are not blocked in development. Dev-only; ignored in production.
+  allowedDevOrigins: ["127.0.0.1"],
+
   images: {
     remotePatterns: [
       {

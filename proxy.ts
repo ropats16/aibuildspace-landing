@@ -19,7 +19,7 @@ import { NextResponse } from "next/server";
 
 const adminAllowed =
   process.env.NODE_ENV !== "production" ||
-  process.env.KEYSTATIC_STORAGE === "github";
+  process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
 
 export function proxy() {
   if (adminAllowed) return NextResponse.next();

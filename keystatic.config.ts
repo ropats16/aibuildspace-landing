@@ -34,7 +34,7 @@ const componentBlocks = {
 
 export default config({
   storage:
-    process.env.KEYSTATIC_STORAGE === 'github'
+    process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === 'github'
       ? {
           kind: 'github',
           repo: { owner: 'ropats16', name: 'aibuildspace-landing' },
