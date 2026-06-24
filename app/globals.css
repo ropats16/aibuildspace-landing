@@ -282,14 +282,19 @@ h1, h2, h3, h4, .font-display {
 
 /* Code blocks */
 .prose pre {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 1rem;
-  padding: 1.25rem 1.5rem;
+  /* Extra right padding reserves space for the copy button (CodeBlock.tsx). */
+  padding: 1.25rem 3.25rem 1.25rem 1.5rem;
   overflow-x: auto;
   margin: 1.75em 0;
   font-size: 0.875em;
   line-height: 1.6;
+  /* Wrap long lines so the full text is visible instead of being clipped. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .prose pre code {
   background: none;

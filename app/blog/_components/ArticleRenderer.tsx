@@ -3,6 +3,7 @@ import type { DocumentRendererProps } from "@keystatic/core/renderer";
 import type { DocumentNode } from "@keystatic/core";
 import type { ReactNode, ReactElement } from "react";
 import { VideoEmbed } from "./VideoEmbed";
+import { CodeBlock } from "./CodeBlock";
 
 // ---------------------------------------------------------------------------
 // Slugify: stable, lowercase, alphanumeric + hyphens only
@@ -105,6 +106,9 @@ const renderers: DocumentRendererProps["renderers"] = {
         </figure>
       );
     },
+    code: ({ children, language }) => (
+      <CodeBlock language={language}>{children}</CodeBlock>
+    ),
   },
 };
 

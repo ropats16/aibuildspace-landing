@@ -65,11 +65,16 @@ function extractYouTubeId(url: string): string | null {
 function YouTubeEmbed({ url, title }: { url: string; title?: string }) {
   const videoId = extractYouTubeId(url);
   const [playing, setPlaying] = useState(false);
+  // Prefer the full-res 1280x720 thumbnail; fall back to hqdefault for videos
+  // that have no maxres image (older/SD uploads return 404 for maxresdefault).
+  const [thumbFallback, setThumbFallback] = useState(false);
   const firedRef = useRef(false);
 
   if (!videoId) return <FallbackCard url={url} title={title} />;
 
-  const thumbnailSrc = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const thumbnailSrc = `https://i.ytimg.com/vi/${videoId}/${
+    thumbFallback ? "hqdefault" : "maxresdefault"
+  }.jpg`;
   const embedSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
   const embedTitle = title ?? "YouTube video";
 
@@ -99,6 +104,7 @@ function YouTubeEmbed({ url, title }: { url: string; title?: string }) {
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 65vw, 100vw"
+            onError={() => setThumbFallback(true)}
           />
           {/* Dark scrim for contrast */}
           <div className="absolute inset-0 bg-ink/20" aria-hidden="true" />
