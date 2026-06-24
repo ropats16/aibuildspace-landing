@@ -87,7 +87,7 @@ export default config({
         bannerImage: fields.image({
           label: 'Banner image',
           description:
-            '~1200x630 (16:9). Doubles as the social preview image.',
+            '1200x675 (16:9). Doubles as the social preview image.',
           directory: 'public/images/blog/banners',
           publicPath: '/images/blog/banners/',
           validation: { isRequired: true },

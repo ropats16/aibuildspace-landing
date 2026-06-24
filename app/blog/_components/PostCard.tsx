@@ -18,9 +18,12 @@ export function PostCard({ post }: { post: Post }) {
   const formattedDate = formatDate(post.publishedDate);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-18px_rgba(11,11,12,0.22),0_2px_8px_rgba(11,11,12,0.04)] hover:ring-black/[0.10] sm:flex-row sm:items-stretch">
-      {/* Banner image */}
-      <div className="relative aspect-video w-full overflow-hidden bg-border/30 sm:aspect-auto sm:w-2/5 sm:max-w-[380px] sm:shrink-0 sm:min-h-[210px]">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-black/[0.06] shadow-[0_1px_2px_rgba(11,11,12,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-18px_rgba(11,11,12,0.22),0_2px_8px_rgba(11,11,12,0.04)] hover:ring-black/[0.10] sm:flex-row sm:items-center">
+      {/* Banner image — fixed 16:9 at every breakpoint so it always matches the
+          source ratio. Must NOT stretch to the card body height (the row uses
+          items-center, not items-stretch); otherwise object-cover crops the
+          banner edges on posts with longer titles/summaries. */}
+      <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-border/30 sm:w-2/5 sm:max-w-[380px]">
         {post.bannerImage ? (
           <Image
             src={post.bannerImage}
