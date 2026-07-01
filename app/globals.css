@@ -269,6 +269,12 @@ h1, h2, h3, h4, .font-display {
   border-radius: 2px;
 }
 
+/* File download card opts out of the inline-link underline treatment above */
+.prose a.file-download,
+.prose a.file-download:hover {
+  border-bottom: none;
+}
+
 /* Inline code */
 .prose code {
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;

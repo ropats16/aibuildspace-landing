@@ -20,6 +20,8 @@ export interface Post {
   bannerImage: string | null;
   bannerAlt: string;
   videoUrl: string | null;
+  /** Raw author-supplied JSON-LD `<script>` markup, injected verbatim. */
+  structuredData: string | null;
   /** Lazy async accessor — call `await post.content()` to get the document nodes. */
   content: () => Promise<readonly DocumentNode[]>;
 }
@@ -90,6 +92,7 @@ function entryToPost(
     bannerImage: entry.bannerImage ?? null,
     bannerAlt: entry.bannerAlt,
     videoUrl: entry.videoUrl ?? null,
+    structuredData: entry.structuredData || null,
     content: entry.content as () => Promise<readonly DocumentNode[]>,
   };
 }

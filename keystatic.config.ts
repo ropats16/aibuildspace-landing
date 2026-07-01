@@ -30,6 +30,32 @@ const componentBlocks = {
     },
     preview: () => null,
   }),
+  fileDownload: component({
+    label: 'File Download',
+    schema: {
+      file: fields.file({
+        label: 'File',
+        directory: 'public/downloads',
+        publicPath: '/downloads/',
+        validation: { isRequired: true },
+      }),
+      title: fields.text({
+        label: 'Title',
+        description: 'Card heading, e.g. "Claude skill file".',
+        validation: { isRequired: true },
+      }),
+      downloadName: fields.text({
+        label: 'Download filename',
+        description:
+          'Exact filename the reader saves, e.g. skill.md. Leave blank to use the uploaded filename.',
+      }),
+      description: fields.text({
+        label: 'Description',
+        description: 'Optional one-liner shown under the title.',
+      }),
+    },
+    preview: () => null,
+  }),
 };
 
 export default config({
@@ -78,6 +104,12 @@ export default config({
           label: 'Keywords',
           description:
             'Comma-separated. e.g. ai workflows, claude code, prompt engineering',
+          multiline: true,
+        }),
+        structuredData: fields.text({
+          label: 'Structured data (JSON-LD)',
+          description:
+            'Advanced SEO/AEO. Paste full <script type="application/ld+json">…</script> blocks (e.g. HowTo, FAQPage). Injected into the article head as-is. Leave blank if unsure.',
           multiline: true,
         }),
         tags: fields.text({

@@ -4,6 +4,7 @@ import type { DocumentNode } from "@keystatic/core";
 import type { ReactNode, ReactElement } from "react";
 import { VideoEmbed } from "./VideoEmbed";
 import { CodeBlock } from "./CodeBlock";
+import { FileDownload, type FileDownloadProps } from "./FileDownload";
 
 // ---------------------------------------------------------------------------
 // Slugify: stable, lowercase, alphanumeric + hyphens only
@@ -121,6 +122,7 @@ const componentBlocks = {
   captionedImage: (props: CaptionedImageProps) => (
     <CaptionedImageBlock {...props} />
   ),
+  fileDownload: (props: FileDownloadProps) => <FileDownload {...props} />,
 };
 
 // ---------------------------------------------------------------------------

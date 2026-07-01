@@ -153,6 +153,15 @@ export default async function Page({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      {/* Author-supplied structured data (HowTo, FAQPage, …) — raw <script>
+          blocks pasted in the CMS. Trusted single-author input; injected as-is. */}
+      {post.structuredData && (
+        <div
+          className="hidden"
+          dangerouslySetInnerHTML={{ __html: post.structuredData }}
+        />
+      )}
+
       {/* Analytics: fires blog_post_view + scroll_depth milestones client-side */}
       <PostViewTracker slug={slug} />
 
